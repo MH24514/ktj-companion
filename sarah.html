@@ -6,6 +6,7 @@
 <style>:root{color-scheme:light;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>KTJ Companion</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="game-modules.js"></script>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,700;1,400&display=swap">
 <style>
@@ -812,67 +813,7 @@ function sheetHTML(){
 
 /* ---------- SIXplorer: Lern-Arena ---------- */
 var LEVELS = ['Rookie','Explorer','Navigator','Pilot','Captain'], FA = ['Fakt','Annahme'];
-var GAMES = {
-  culture: {
-    t: 'The Cultural Guide', 
-    s: 'Interkulturelle Kommunikation & Third Culture nach Fred Casmir', 
-    ic: 'person', 
-    col: 'var(--brand-strong)', 
-    items: [
-      {
-        q: 'Dein Kollege aus einer anderen Niederlassung schreibt extrem kurze, sachliche Mails ohne Begrüssung. Dein erster Gedanke: „Der ist unhöflich und will nicht mit uns arbeiten.“ Wie reagierst du?',
-        o: [
-          'Du schreibst ihm öffentlich im Team-Chat, dass er gefälligst freundlicher sein soll.',
-          'Du ignorierst es und denkst dir: „Ausländer sind eben so direkt, da kann man nichts machen.“',
-          'Du trennst die Fakten (Mails sind kurz) von deiner Interpretation und fragst in einem kurzen Video-Call nach seinen Kommunikationspräferenzen.'
-        ],
-        a: 2,
-        e: 'Nach Casmir neigen wir dazu, das Verhalten anderer nur auf kulturelle Herkunft oder Stereotype zu reduzieren. Option 3 trennt Fakten von Interpretation und baut eine gemeinsame „Third Culture“ auf.'
-      },
-      {
-        q: 'Im Projekt-Meeting redet eine Person fast gar nicht. Nach westlichem Massstab interpretierst du das als mangelndes Engagement. Was tust du?',
-        o: [
-          'Du überspringst sie in der Runde komplett, um sie nicht in Verlegenheit zu bringen.',
-          'Du machst ihr vor allen Leuten Druck: „Du hast noch gar nichts gesagt, jetzt komm mal aus der Deckung!“',
-          'Du schaffst einen sicheren Rahmen (z. B. asynchrones Feedback oder direkte, wertschätzende Fragen), um ihre Perspektive zu verstehen, statt voreilige Schlüsse zu ziehen.'
-        ],
-        a: 2,
-        e: 'Richtig! In vielen Kulturen gilt langes Nachdenken oder Zurückhaltung vor Gruppen als Respekt. Wer hier sofort urteilt, zerstört das Vertrauen.'
-      },
-      {
-        q: 'Ihr wollt als internationales Team eure Zusammenarbeit regeln. Nach Casmirs Konzept der „Third Culture“, wie solltet ihr vorgehen?',
-        o: [
-          'Die Kultur der Zentrale wird für alle verbindlich festgelegt.',
-          'Jeder macht einfach weiter wie bisher, man arrangiert sich irgendwie.',
-          'Ihr sucht aktiv nach gemeinsamen Zielen und formt ad hoc eine „Third Culture“, die die Stärken und Präferenzen aller Mitglieder verbindet.'
-        ],
-        a: 2,
-        e: 'Exakt. Eine ideale „Third Culture“ entsteht, wenn Teams Normen etablieren, die individuelle Unterschiede wertschätzen und als gemeinsame Basis dienen.'
-      }
-    ]
-  },
-  fakt:{t:'Fakt oder Annahme', s:'Was ist belegt, was nur vermutet? Training fürs kritische Denken.', ic:'info', col:'var(--brand-strong)', items:[
-    {q:'«Unsere Kunden wollen vor allem schnellere Zahlungen.»', o:FA, a:1, e:'Ohne Gespräche mit Kunden ist das eine Vermutung, auch wenn sie plausibel klingt.'},
-    {q:'«In drei von fünf Interviews wurde Betrug als Hauptsorge genannt.»', o:FA, a:0, e:'Das ist gezählt und lässt sich belegen.'},
-    {q:'«Alle im Team wollen das neue Tool.»', o:FA, a:1, e:'Wörter wie «alle» oder «nie» deuten oft auf eine ungeprüfte Annahme hin.'},
-    {q:'«Die IT ist der Engpass, weil sie bei uns intern oft der Engpass ist.»', o:FA, a:1, e:'Hier wird von sich auf andere geschlossen. So entstehen falsche Prämissen.'},
-    {q:'«Im letzten Quartal gingen 14 Anfragen ein.»', o:FA, a:0, e:'Eine Zahl aus dem System ist ein Fakt, solange die Quelle stimmt.'},
-    {q:'«Die Konkurrenz ist schneller als wir.»', o:FA, a:1, e:'Ohne Vergleich ist das ein Bauchgefühl. Frage dich: Woran würde ich das messen?'}]},
-  quiz:{t:'Börsen-Blitz', s:'Finanzmarkt-Basics in sechs Fragen', ic:'bolt', col:'var(--navy)', items:[
-    {q:'Was ist die Kernaufgabe einer Börse?', o:['Unternehmen Geld leihen','Aktienkurse festlegen','Käufer und Verkäufer zusammenbringen','Anleger beraten'], a:2, e:'Die Börse bietet den Marktplatz. Preise entstehen aus Angebot und Nachfrage.'},
-    {q:'Was bedeutet Settlement?', o:['Die Order aufgeben','Wertschriften und Geld tatsächlich austauschen','Den Preis feststellen','Den Kunden prüfen'], a:1, e:'Beim Settlement wechseln Wertschriften und Geld wirklich den Besitzer.'},
-    {q:'Wofür steht SMI?', o:['Swiss Money Institute','Standard Market Interface','Swiss Mortgage Index','Swiss Market Index'], a:3, e:'Der Swiss Market Index bildet grosse Schweizer Aktien ab.'},
-    {q:'Was ist eine Obligation?', o:['Ein Kredit an einen Schuldner gegen Zins','Ein Anteil am Unternehmen','Eine Versicherung','Ein Optionsrecht'], a:0, e:'Wer eine Obligation kauft, leiht dem Herausgeber Geld und erhält dafür Zins.'},
-    {q:'Was macht Instant Payment besonders?', o:['Sie ist immer gratis','Nur Firmen dürfen sie nutzen','Das Geld ist in Sekunden da, auch am Wochenende','Sie braucht keine Bank'], a:2, e:'Die Gutschrift erfolgt in Sekunden, rund um die Uhr.'},
-    {q:'Warum ist Diversifikation sinnvoll?', o:['Sie garantiert Gewinn','Sie verteilt das Risiko auf mehrere Anlagen','Sie senkt die Steuern','Sie beschleunigt den Handel'], a:1, e:'Nicht alles auf eine Karte setzen: Verluste einer Anlage treffen weniger hart.'}]},
-  dojo:{t:'Feedback-Dojo', s:'Vier Situationen: Wie reagierst du am besten?', ic:'reflexion', col:'var(--brand-strong)', items:[
-    {q:'Ein Kollege verliert in seiner Präsentation den Faden. Du willst ihm Feedback geben.', o:['«Du warst unvorbereitet», direkt nach dem Meeting','Im Team-Chat vor allen kommentieren','Nichts sagen','Unter vier Augen: «Bei Folie 5 hast du den Faden verloren. Wie hast du es erlebt?»'], a:3, e:'Beobachtung statt Urteil, im Gespräch zu zweit, mit einer Frage statt einem Vorwurf.'},
-    {q:'Deine Linie sagt die Lernzeit kurzfristig ab.', o:['Ersatztermin anfragen und nachfragen, was im Weg steht','Still akzeptieren und abends nacharbeiten','Die Lernzeit streichen'], a:0, e:'Lernzeit ist vereinbart. Ein Ersatztermin hält sie verbindlich, ohne Streit.'},
-    {q:'Du bekommst Kritik an deinem Bericht und fühlst dich angegriffen.', o:['Sofort verteidigen','Zurückkritisieren','Eine Nacht überlegen, dann nachfragen, was genau gemeint ist'], a:2, e:'Abstand hilft, Kritik von der Person zu trennen. Nachfragen macht sie nutzbar.'},
-    {q:'Zwei Aufgaben sind dringend, du schaffst nur eine.', o:['Beide halb erledigen','Mit der Auftraggeberin klären, was zuerst zählt','Heimlich länger arbeiten','Die einfachere wählen'], a:1, e:'Prioritäten transparent machen, statt still zu leiden.'}]},
-  ord1:{t:'Weg eines Börsengeschäfts', s:'Bringe die vier Schritte in die richtige Reihenfolge', ic:'list', col:'var(--navy)', steps:['Die Order wird aufgegeben','Käufer und Verkäufer werden zusammengeführt (Matching)','Clearing: Verpflichtungen werden verrechnet','Settlement: Wertschriften und Geld wechseln den Besitzer']},
-  ord2:{t:'Reise einer Instant Payment', s:'Wie kommt das Geld in Sekunden an?', ic:'list', col:'var(--brand-strong)', steps:['Der Kunde löst die Zahlung aus','Die Bank prüft Konto und Limite','Die Zahlung läuft über die Plattform','Die Empfängerbank schreibt gut']}
-};
+var GAMES = ALL_GAME_MODULES;
 var BK = [
   ['Tim','Retail Banking','Kap. 1: Was ist Organizational Behavior?','Evidenzbasiertes Management','Verhalten in Organisationen systematisch mit Daten statt nur nach Bauchgefühl untersuchen','OB untersucht, wie Einzelne, Gruppen und Strukturen Verhalten und Leistung in Organisationen beeinflussen. Intuition täuscht oft, darum ergänzt man sie durch Studien und Daten.','Tim will ein neues Arbeitszeitmodell einführen, weil er spürt, dass es alle motiviert.','Wie gehst du nach OB vor?',['Auf Tims Bauchgefühl vertrauen','Erst Studien und eigene Daten prüfen, dann in einem Piloten testen','Nichts messen und alle gleich behandeln'],1,'Systematisches Prüfen ergänzt die Intuition und senkt das Risiko teurer Fehlentscheide.'],
   ['Dana','HR','Kap. 2: Diversität in Organisationen','Stereotype und Diskriminierung','Pauschale Annahmen über Gruppen führen zu ungleicher Behandlung und müssen hinterfragt werden','Diversität umfasst sichtbare Merkmale wie Alter oder Geschlecht und tiefe Merkmale wie Werte. Stereotype sind vereinfachte Annahmen über Gruppen. Sie werden zu Diskriminierung, wenn sie Entscheidungen steuern.','Im Recruiting fällt auf, dass Bewerbende mit Lücke im Lebenslauf automatisch aussortiert werden.','Was tust du?',['Das Kriterium auf Stereotype prüfen und nach den Anforderungen der Stelle entscheiden','Nichts, das ist bewährt','Nur noch Bewerbende ohne Lücken einladen'],0,'Entscheide anhand von Fähigkeiten und Aufgabe. Pauschale Kriterien verstecken oft Stereotype.'],
@@ -1011,18 +952,39 @@ function scrArena(){
   return h;
 }
 function scrSpiel(c){
-  var G = GAMES[c.id], g = S.g, h, n, it, st, P = [2,0,3,1];
-  if (!g || g.id !== c.id) g = S.g = newGame(c.id);
+  var G = GAMES[c.id], g = S.g, h;
+  if (!g || g.id !== c.id) {
+    g = S.g = newGame(c.id);
+    if (G.isStory) { g.scene = 'start'; }
+  }
   h = top(G.t, G.s, null, true);
+
+  // WENN ES EIN STORY-SPIEL IST (Verzweigte Entscheidungen):
+  if (G.isStory) {
+    var scKey = g.scene || 'start';
+    var sc = G.scenes[scKey];
+    
+    if (sc.end) {
+      return h + sec(sc.title, '<div class="panel in tc"><p class="t" style="white-space: pre-line; font-size:15px;">' + esc(sc.q) + '</p><div class="actions jc mt14"><button class="btn primary" data-a="g-story-reset">Nochmal spielen</button><button class="btn ghost" data-a="back">Zur Arena</button></div></div>');
+    }
+    
+    return h + sec(sc.title, '<div class="panel in mt14"><p class="t" style="font-size:15px; line-height:1.5;">' + esc(sc.q) + '</p><div class="stack mt14">' + 
+      sc.o.map(function(opt, idx){
+        return '<button class="opt" data-a="g-story-choice" data-next="' + opt.next + '">' + esc(opt.text) + '</button>';
+      }).join('') + 
+      '</div></div>');
+  }
+
+  // STANDARD-QUIZ LOGIK (für die anderen Spiele)
   if (!g.fin && G.kind === 'world') return h + worldView(G, g);
   if (g.fin){
     return h + sec('', '<div class="panel in tc"><p class="big">+' + g.xp + ' XP</p><p class="m mt6">' + resMsg(G, g) + '</p><div class="actions jc"><button class="btn primary" data-a="g-again">Nochmal</button><button class="btn ghost" data-a="back">Zur Arena</button></div></div>');
   }
   if (G.steps){
-    st = G.steps;
+    var st = G.steps, P = [2,0,3,1];
     return h + sec('', '<p class="m">Tippe die Schritte in der richtigen Reihenfolge an.</p><div class="mt10">' + st.slice(0, g.nx).map(function(s, k){ return '<div class="opt right">' + (k + 1) + '. ' + esc(s) + '</div>'; }).join('') + P.filter(function(r){ return r >= g.nx; }).map(function(r){ return '<button class="opt" data-a="g-ord" data-v="' + r + '">' + esc(st[r]) + '</button>'; }).join('') + '</div>');
   }
-  n = G.items.length; it = G.items[g.i];
+  var n = G.items.length, it = G.items[g.i];
   return h + sec('', '<div class="prog" role="img" aria-label="Frage ' + (g.i + 1) + ' von ' + n + '">' + G.items.map(function(x, k){ return '<i' + (k <= g.i ? ' class="on"' : '') + '></i>'; }).join('') + '</div><div class="panel in mt14"><p class="t">' + esc(it.q) + '</p>'
     + it.o.map(function(o, k){ var cl = g.sel === null ? '' : k === it.a ? ' right' : k === g.sel ? ' wrong' : ''; return '<button class="opt' + cl + '" data-a="g-pick" data-v="' + k + '"' + (g.sel !== null ? ' disabled' : '') + '>' + esc(o) + '</button>'; }).join('')
     + (g.sel !== null ? '<div class="note mt14">' + ic('info') + '<span><b>' + (g.sel === it.a ? 'Richtig. ' : 'Nicht ganz. ') + '</b>' + esc(it.e) + '</span></div><button class="btn primary block mt14" data-a="g-next">' + (g.i + 1 < n ? 'Weiter' : 'Ergebnis ansehen') + '</button>' : '') + '</div>');
@@ -1182,6 +1144,13 @@ function setHash(){ try { var slug = ''; ROLES.forEach(function(r){ if (r[0] ===
 
 /* ---------- Aktionen ---------- */
 var A = {
+  'g-story-choice': function(v, el) {
+    var nextScene = el.getAttribute('data-next');
+    if (S.g) { S.g.scene = nextScene; }
+  },
+  'g-story-reset': function() {
+    if (S.g) { S.g.scene = 'start'; }
+  },
   'g-thok':function(){ var g = S.g, m = WM[g.m], q = S.lern.seq = S.lern.seq || []; if (q.indexOf(m.th) < 0) q.push(m.th); g.ph = recallCard(m) ? 'rc' : 'tk'; g.rsel = null; },
   'g-rpick':function(v){ var g = S.g, rc = recallCard(WM[g.m]); if (g.rsel !== null) return; g.rsel = +v; if (g.rsel === rc.rq.a){ g.xp += 5; g.cb++; } else g.cb = 0; },
   'g-rok':function(){ S.g.ph = 'tk'; },
