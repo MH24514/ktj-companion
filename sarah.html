@@ -813,6 +813,44 @@ function sheetHTML(){
 /* ---------- SIXplorer: Lern-Arena ---------- */
 var LEVELS = ['Rookie','Explorer','Navigator','Pilot','Captain'], FA = ['Fakt','Annahme'];
 var GAMES = {
+  culture: {
+    t: 'The Cultural Guide', 
+    s: 'Interkulturelle Kommunikation & Third Culture nach Fred Casmir', 
+    ic: 'person', 
+    col: 'var(--brand-strong)', 
+    items: [
+      {
+        q: 'Dein Kollege aus einer anderen Niederlassung schreibt extrem kurze, sachliche Mails ohne Begrüssung. Dein erster Gedanke: „Der ist unhöflich und will nicht mit uns arbeiten.“ Wie reagierst du?',
+        o: [
+          'Du schreibst ihm öffentlich im Team-Chat, dass er gefälligst freundlicher sein soll.',
+          'Du ignorierst es und denkst dir: „Ausländer sind eben so direkt, da kann man nichts machen.“',
+          'Du trennst die Fakten (Mails sind kurz) von deiner Interpretation und fragst in einem kurzen Video-Call nach seinen Kommunikationspräferenzen.'
+        ],
+        a: 2,
+        e: 'Nach Casmir neigen wir dazu, das Verhalten anderer nur auf kulturelle Herkunft oder Stereotype zu reduzieren. Option 3 trennt Fakten von Interpretation und baut eine gemeinsame „Third Culture“ auf.'
+      },
+      {
+        q: 'Im Projekt-Meeting redet eine Person fast gar nicht. Nach westlichem Massstab interpretierst du das als mangelndes Engagement. Was tust du?',
+        o: [
+          'Du überspringst sie in der Runde komplett, um sie nicht in Verlegenheit zu bringen.',
+          'Du machst ihr vor allen Leuten Druck: „Du hast noch gar nichts gesagt, jetzt komm mal aus der Deckung!“',
+          'Du schaffst einen sicheren Rahmen (z. B. asynchrones Feedback oder direkte, wertschätzende Fragen), um ihre Perspektive zu verstehen, statt voreilige Schlüsse zu ziehen.'
+        ],
+        a: 2,
+        e: 'Richtig! In vielen Kulturen gilt langes Nachdenken oder Zurückhaltung vor Gruppen als Respekt. Wer hier sofort urteilt, zerstört das Vertrauen.'
+      },
+      {
+        q: 'Ihr wollt als internationales Team eure Zusammenarbeit regeln. Nach Casmirs Konzept der „Third Culture“, wie solltet ihr vorgehen?',
+        o: [
+          'Die Kultur der Zentrale wird für alle verbindlich festgelegt.',
+          'Jeder macht einfach weiter wie bisher, man arrangiert sich irgendwie.',
+          'Ihr sucht aktiv nach gemeinsamen Zielen und formt ad hoc eine „Third Culture“, die die Stärken und Präferenzen aller Mitglieder verbindet.'
+        ],
+        a: 2,
+        e: 'Exakt. Eine ideale „Third Culture“ entsteht, wenn Teams Normen etablieren, die individuelle Unterschiede wertschätzen und als gemeinsame Basis dienen.'
+      }
+    ]
+  },
   fakt:{t:'Fakt oder Annahme', s:'Was ist belegt, was nur vermutet? Training fürs kritische Denken.', ic:'info', col:'var(--brand-strong)', items:[
     {q:'«Unsere Kunden wollen vor allem schnellere Zahlungen.»', o:FA, a:1, e:'Ohne Gespräche mit Kunden ist das eine Vermutung, auch wenn sie plausibel klingt.'},
     {q:'«In drei von fünf Interviews wurde Betrug als Hauptsorge genannt.»', o:FA, a:0, e:'Das ist gezählt und lässt sich belegen.'},
