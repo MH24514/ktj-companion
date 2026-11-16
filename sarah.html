@@ -353,10 +353,13 @@ button.opt:hover:not(:disabled){border-color:var(--muted)}.opt:disabled{cursor:d
 .digs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;margin-top:12px}.digs button{height:44px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-weight:700;color:var(--ink)}.digs button:disabled,.btn:disabled{opacity:.35;cursor:default}
 .wbox{position:relative;height:430px;background:#cfe3f2;overflow:hidden}
 .wph{position:absolute;inset:0;display:grid;place-items:center;color:#15191E;font-size:13px;padding:20px;text-align:center}
-.wcv{width:100%;height:100%}.wcv canvas{display:block;touch-action:none}
+.wcv{width:100%;height:100%}.wgo{position:absolute;top:8px;right:8px;z-index:2}.wcv canvas{display:block;touch-action:none}
 .wdlg{position:absolute;left:8px;right:8px;bottom:8px;max-height:calc(100% - 16px);overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;box-shadow:0 8px 24px -10px var(--shadow)}
 .whint{position:absolute;left:8px;right:8px;bottom:8px;background:var(--scrim);color:#fff;border-radius:10px;padding:8px 10px;font-size:12.5px;pointer-events:none}
-.th summary{cursor:pointer}.th p{margin-top:6px}
+.th summary{cursor:pointer}.th p{margin-top:6px}.whud{position:absolute;top:8px;left:8px;z-index:2;max-width:55%;background:var(--scrim);color:#fff;border-radius:8px;padding:4px 8px;font-size:11.5px;font-weight:700;pointer-events:none}
+.xpop{display:inline-block;margin-top:10px;padding:4px 12px;border-radius:99px;background:var(--brand);color:#fff;font-weight:700;animation:pop .5s ease-out}
+@keyframes pop{0%{transform:scale(.4);opacity:0}70%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.xpop{animation:none}}
 </style>
 
 </head>
@@ -367,7 +370,7 @@ button.opt:hover:not(:disabled){border-color:var(--muted)}.opt:disabled{cursor:d
 <script>
 (function(){
 'use strict';
-var VERSION = 5, S, lastKey = '', toastTimer;
+var VERSION = 7, S, lastKey = '', toastTimer;
 var esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); };
 var PATHS = {
   journey:'<circle cx="5" cy="18" r="2"/><circle cx="12" cy="11" r="2"/><circle cx="19" cy="5" r="2"/><path d="M6.4 16.6l4.2-4.2M13.5 9.6l4.1-3.3"/>',
@@ -860,7 +863,7 @@ BK.forEach(function(b, i){
 TH.forEach(function(c, i){ var o = [TH[(i + 1) % 17].d, TH[(i + 6) % 17].d], k = i % 3; o.splice(k, 0, c.d); c.rq = {q:'Was beschreibt «' + c.t + '»?', o:o, a:k}; });
 GAMES.trainer = {t:'Theorie-Trainer', s:'Wiederhole die Karten aus allen 17 Kapiteln', ic:'lernen', col:'var(--brand-strong)', items:TH.map(function(c){ return {q:c.rq.q, o:c.rq.o, a:c.rq.a, e:c.txt}; })};
 GAMES = Object.assign({sim:{kind:'world', t:'SIX Young Leaders Welt', s:'Lerne alle 17 OB-Kapitel in der Welt: erst Erklärung, dann Anwendung, später Wiederholung', ic:'person', col:'var(--navy)'}}, GAMES);
-function newGame(id){ return {id:id, i:0, sel:null, ok:0, xp:0, fin:false, nx:0, err:0, m:null, hid:false, ph:'th', rsel:null, lv:0, wr:false, done:WM.map(function(){ return false; })}; }
+function newGame(id){ return {id:id, i:0, sel:null, ok:0, xp:0, fin:false, nx:0, err:0, m:null, hid:false, ph:'th', rsel:null, lv:0, wr:false, cb:0, last:0, ev:'Dein Auftrag: Hilf 17 Kolleginnen und Kollegen und baue dir ein Werkzeugset für den Führungsalltag auf. Jede Karte ist ein Werkzeug, das du sofort einsetzen kannst.', done:WM.map(function(){ return false; })}; }
 function resMsg(G, g){
   if (G.kind === 'world') return 'Team aufgebaut: ' + WM.length + ' Personen. ' + (g.err ? g.err + (g.err === 1 ? ' Fehlversuch' : ' Fehlversuche') + ' unterwegs, aus denen du gelernt hast.' : 'Ohne Fehlversuch, stark!');
   return G.items ? g.ok + ' von ' + G.items.length + ' richtig' : (g.err ? g.err + (g.err === 1 ? ' Fehlversuch' : ' Fehlversuche') : 'Fehlerfrei!');
@@ -920,8 +923,8 @@ function worldTick(){
   if (W.tg){ dx = W.tg.x - c.position.x; dz = W.tg.z - c.position.z; d = Math.hypot(dx, dz); if (d < .1) W.tg = null; else { c.position.x += dx / d * .08; c.position.z += dz / d * .08; } }
   c.position.x = Math.max(-17, Math.min(17, c.position.x)); c.position.z = Math.max(-22, Math.min(17, c.position.z));
   c.rotation.set(W.pitch, W.yaw, 0);
-  W.mk.forEach(function(m, i){ m.rotation.y = t; m.position.y = 2.7 + Math.sin(t + i) * .12; m.material.color.setHex(g && g.done && g.done[i] ? 0x1f7a4d : 0xde3919); });
-  W.grp.forEach(function(a, i){ a.forEach(function(o){ o.visible = !g || i <= g.lv; }); });
+  W.mk.forEach(function(m, i){ m.rotation.y = t; m.position.y = 2.7 + Math.sin(t + i) * .12; m.material.color.setHex(g && g.done && g.done[i] ? 0x1f7a4d : 0xde3919); m.scale.setScalar(g && i === g.lv && !g.done[i] ? 2 + Math.sin(t * 2) * .3 : 1); });
+  W.grp.forEach(function(a, i){ a.forEach(function(o){ o.visible = !g || i <= (g.lv || 0); }); if (g && g.done && g.done[i]){ a[0].material.color.setHex(0x1f7a4d); a[1].position.y = .8 + Math.abs(Math.sin(t * 2 + i)) * .2; a[2].position.y = 1.7 + Math.abs(Math.sin(t * 2 + i)) * .2; } });
   W.r.render(W.sc, c);
 }
 function worldAttach(){
@@ -932,14 +935,19 @@ function worldAttach(){
   if (W.el.parentNode !== ph){ ph.textContent = ''; ph.appendChild(W.el); w = ph.clientWidth || 360; h = ph.clientHeight || 430; W.r.setSize(w, h); W.cam.aspect = w / h; W.cam.updateProjectionMatrix(); }
   if (!W.run){ W.run = true; worldTick(); }
 }
+var PARTS = [[0,4,'Dich und andere verstehen'],[5,7,'Entscheiden und motivieren'],[8,10,'Gruppen und Teams'],[11,13,'Macht, Führung, Konflikte'],[14,16,'Organisation und Wandel']];
+var CH = ['Treffer!','Sauber gelöst!','Das sass!','Starke Führung!'];
+var NU = ['Du triffst bessere Entscheidungen, weil du Behauptungen prüfst, statt Meinungen zu glauben.','Du erkennst, wann Vorurteile Personalentscheide beeinflussen, und holst bessere Talente ins Team.','Du merkst früh, wenn jemand innerlich abschaltet, und steuerst gegen, bevor gekündigt wird.','Du verstehst, warum Kundenkontakt müde macht, und schützt dein Team vor Erschöpfung.','Du setzt Leute dort ein, wo ihre Stärken liegen, und führst jede Person passender.','Du erwischst typische Denkfehler bei dir und anderen und triffst robustere Entscheide.','Du formulierst Ziele, die wirklich motivieren, statt nur Druck aufzubauen.','Du gestaltest Stellen so, dass Arbeit sinnvoll wirkt und dein Team engagiert bleibt.','Du ordnest Streit in neuen Teams ein und führst gezielt zum nächsten Schritt.','Du baust Teams, die mehr leisten als die Summe ihrer Mitglieder.','Du stellst sicher, dass deine Botschaft ankommt, und sparst Missverständnisse und Nacharbeit.','Du wählst den Führungsstil, der zur Situation passt, und gewinnst Vertrauen und Energie.','Du bewegst Menschen auch ohne Chefrolle, durch Expertise, Vertrauen und gute Argumente.','Du löst Streit so, dass beide Seiten gewinnen und Beziehungen halten.','Du erkennst, wenn Strukturen Tempo bremsen, und schlägst passende Änderungen vor.','Du verstehst ungeschriebene Regeln, bringst Neue schneller an Bord und prägst Kultur bewusst.','Du führst Veränderungen so, dass sie bleiben, und gehst klug mit Widerstand und Stress um.'];
+function zone(i){ for (var k = 0; k < PARTS.length; k++) if (i <= PARTS[k][1]) return 'Zone ' + (k + 1) + ': ' + PARTS[k][2]; return ''; }
+function award(id, name){ S.lern.bd = S.lern.bd || {}; if (!S.lern.bd[id]){ S.lern.bd[id] = name; toast('Abzeichen: ' + name); } }
 function recallCard(m){ var q = S.lern.seq || [], i; for (i = q.length - 1; i >= 0; i--) if (q[i] !== m.th) return find(TH, 'id', q[i]); return null; }
 function worldView(G, g){
   var m = g.m === null ? null : WM[g.m], o, n = g.done.filter(Boolean).length, last = n === WM.length - 1, c, rc;
-  if (!m) o = '<div class="whint"><b>Level ' + (g.lv + 1) + ' von ' + WM.length + ': Du betreust ' + (g.lv + 1) + (g.lv ? ' Personen' : ' Person') + '.</b> Löse die Aufgabe der Person mit Marker richtig, dann kommt das nächste Kapitel. Ziehen zum Umschauen, tippen zum Gehen. Am PC: Pfeiltasten.</div>';
+  if (!m) o = '<div class="whint">' + (g.ev ? '<b>' + esc(g.ev) + '</b><br>' : '') + '<b>Level ' + (g.lv + 1) + ' von ' + WM.length + ': Du betreust ' + (g.lv + 1) + (g.lv ? ' Personen' : ' Person') + '.</b> Nächste Person: ' + WM[g.lv].n + ' (' + WM[g.lv].ro + '). Ziehen zum Umschauen, tippen zum Gehen. Am PC: Pfeiltasten.</div>';
   else {
     c = find(TH, 'id', m.th); rc = recallCard(m);
     o = '<div class="wdlg">' + who(esc(m.n.charAt(0)), esc(m.n), esc(m.ro)) + '<p class="inline mt6">' + pill('info', m.ico) + (g.ph === 'tk' ? pill('neutral', 'Wende an: ' + c.t) : '') + '</p>';
-    if (g.ph === 'th') o += '<div class="note mt10">' + ic('info') + '<span><b>Theorie: ' + esc(c.t) + '.</b> ' + esc(c.txt) + '</span></div><button class="btn primary block mt14" data-a="g-thok">Verstanden</button>';
+    if (g.ph === 'th') o += '<p class="hint">Mission ' + (g.m + 1) + ' von ' + WM.length + '</p><p class="quote mt6">' + esc(m.sit) + '</p><div class="note mt10">' + ic('info') + '<span><b>Dein neues Werkzeug: ' + esc(c.t) + '</b><br>' + esc(c.txt) + '<br><b>Darum nützlich:</b> ' + esc(NU[g.m]) + '</span></div><button class="btn primary block mt14" data-a="g-thok">Werkzeug einpacken</button>';
     else if (g.ph === 'rc') o += '<p class="hint">Blitz-Wiederholung: ' + esc(rc.t) + '</p><p class="t mt6">' + esc(rc.rq.q) + '</p>'
       + rc.rq.o.map(function(x, k){ var cl = g.rsel === null ? '' : k === rc.rq.a ? ' right' : k === g.rsel ? ' wrong' : ''; return '<button class="opt' + cl + '" data-a="g-rpick" data-v="' + k + '"' + (g.rsel !== null ? ' disabled' : '') + '>' + esc(x) + '</button>'; }).join('')
       + (g.rsel !== null ? '<div class="note mt14">' + ic('info') + '<span><b>' + (g.rsel === rc.rq.a ? 'Richtig. ' : 'Nicht ganz. ') + '</b>' + esc(rc.txt) + '</span></div><button class="btn primary block mt14" data-a="g-rok">Weiter zur Aufgabe</button>' : '');
@@ -947,11 +955,11 @@ function worldView(G, g){
     else {
       o += (m.mem ? '' : '<p class="quote mt10">' + esc(m.sit) + '</p>') + '<p class="t mt10">' + esc(m.q) + '</p>'
         + m.o.map(function(x, k){ var cl = g.sel === null ? '' : k === m.a ? ' right' : k === g.sel ? ' wrong' : ''; return '<button class="opt' + cl + '" data-a="g-wpick" data-v="' + k + '"' + (g.sel !== null ? ' disabled' : '') + '>' + esc(x) + '</button>'; }).join('');
-      if (g.sel !== null) o += '<div class="note mt14">' + ic('info') + '<span><b>' + (g.sel === m.a ? 'Richtig. ' : 'Nicht ganz. ') + '</b>' + esc(m.e) + ' ' + esc(m.lead) + '</span></div><button class="btn primary block mt14" data-a="g-wclose">' + (g.sel !== m.a ? 'Nochmal versuchen' : last ? 'Auswertung ansehen' : 'Weiter, dein Team wächst') + '</button>';
+      if (g.sel !== null) o += (g.sel === m.a ? '<p class="xpop">+' + g.last + ' XP' + (g.cb > 1 ? ', Combo ×' + g.cb : '') + '</p><p class="quote mt6">«' + CH[g.ok % 4] + ' ' + esc(m.n) + ': Das hilft mir echt weiter!»</p>' : '<p class="quote mt10">«Hm, so richtig klickt das noch nicht», sagt ' + esc(m.n) + '.</p>') + '<div class="note mt10">' + ic('info') + '<span><b>' + (g.sel === m.a ? 'Richtig. ' : 'Fast. ') + '</b>' + esc(m.e) + '</span></div><button class="btn primary block mt14" data-a="g-wclose">' + (g.sel !== m.a ? 'Nochmal versuchen' : last ? 'Auswertung ansehen' : 'Weiter, dein Team wächst') + '</button>';
     }
     o += '</div>';
   }
-  return '<div class="wbox"><div class="wph" id="wph"></div>' + o + '</div>';
+  return '<div class="wbox"><div class="wph" id="wph"></div><div class="whud">' + g.xp + ' XP' + (g.cb > 1 ? ' · Combo ×' + g.cb : '') + ' · ' + zone(g.m === null ? g.lv : g.m) + '</div>' + (m ? '' : '<button class="btn primary wgo" data-a="g-goto">Zur nächsten Station</button>') + o + '</div>';
 }
 function gameDone(){ var g = S.g; if (g.fin) return; g.fin = true; S.lern.xp += g.xp; S.lern.done[g.id] = Math.max(S.lern.done[g.id] || 0, g.xp); feed('Lernspiel gespielt: ' + GAMES[g.id].t); toast('+' + g.xp + ' XP'); }
 function scrArena(){
@@ -959,6 +967,7 @@ function scrArena(){
   var h = top('Lern-Arena', 'Lerne in kurzen Runden, wann du willst. Freiwillig und zum Wiederholen.');
   h += sec('', '<div class="panel in"><div class="lvl"><span class="gic" style="background:var(--navy)">' + ic('star') + '</span><div class="grow"><p class="t">Level ' + (l + 1) + ': ' + LEVELS[l] + '</p><p class="m">' + x + ' XP, ' + S.lern.streak + ' Tage in Folge</p><div class="xpbar mt10" role="img" aria-label="' + p + ' Prozent bis zum nächsten Level"><i style="width:' + p + '%"></i></div></div></div></div>');
   h += sec('Spiele', '<div class="panel rows">' + Object.keys(GAMES).map(function(k){ var g = GAMES[k], d = S.lern.done[k]; return row('spiel', k, k, g.t, g.s, d ? '<span class="blk mt6">' + pill('ok', 'Bestwert ' + d + ' XP', 'check') + '</span>' : '', '<span class="gic" style="background:' + g.col + '">' + ic(g.ic) + '</span>'); }).join('') + '</div>');
+  h += sec('Abzeichen', '<div class="panel in">' + (Object.keys(S.lern.bd || {}).length ? Object.keys(S.lern.bd).map(function(k){ return pill('ok', S.lern.bd[k], 'check'); }).join(' ') : '<p class="m">Noch keine. Meistere Missionen, baue Combos auf und schliesse Zonen ab, um Abzeichen zu sammeln.</p>') + '</div>');
   h += sec('Dein Wissensspeicher', '<div class="panel rows">' + TH.map(function(c){ return (S.lern.seq || []).indexOf(c.id) >= 0 ? '<details class="th"><summary class="t">' + esc(c.t) + '</summary><p class="m">' + esc(c.txt) + '</p></details>' : '<div class="m">' + ic('lock') + ' Noch nicht gefunden: Sie wartet in der Welt.</div>'; }).join('') + '</div><p class="hint">Karten aus der Welt kommen dort immer wieder als Blitz-Wiederholung. Im Theorie-Trainer übst du alle auf einmal.</p>');
   h += sec('Warum Spiele?', '<div class="note">' + ic('info') + '<span>Puzzle- und Strategiespiele fördern kognitive Funktionen, logisches Denken, vorausschauende Planung und Problemlösung (Tappe &amp; Gennat, 2023, S. 183–184). Simulationen wie The Lab erlauben es, Berufs- und Alltagssituationen realistisch zu erproben (Tappe &amp; Gennat, 2023, S. 104). Darum verbindet die Welt beides: kognitive Aufgaben zum Knobeln und Situationen zum Führen. Die Inhalte der Welt folgen den 17 Kapiteln von Robbins &amp; Judge (2021), Essentials of Organizational Behavior, in eigenen Worten zusammengefasst.</span></div>');
   return h;
@@ -1136,13 +1145,14 @@ function setHash(){ try { var slug = ''; ROLES.forEach(function(r){ if (r[0] ===
 /* ---------- Aktionen ---------- */
 var A = {
   'g-thok':function(){ var g = S.g, m = WM[g.m], q = S.lern.seq = S.lern.seq || []; if (q.indexOf(m.th) < 0) q.push(m.th); g.ph = recallCard(m) ? 'rc' : 'tk'; g.rsel = null; },
-  'g-rpick':function(v){ var g = S.g, rc = recallCard(WM[g.m]); if (g.rsel !== null) return; g.rsel = +v; if (g.rsel === rc.rq.a) g.xp += 5; },
+  'g-rpick':function(v){ var g = S.g, rc = recallCard(WM[g.m]); if (g.rsel !== null) return; g.rsel = +v; if (g.rsel === rc.rq.a){ g.xp += 5; g.cb++; } else g.cb = 0; },
   'g-rok':function(){ S.g.ph = 'tk'; },
   'g-next':function(){ var g = S.g, G = GAMES[g.id]; if (g.i + 1 < G.items.length){ g.i++; g.sel = null; } else gameDone(); },
-  'g-wpick':function(v){ var g = S.g, m = WM[g.m]; if (g.sel !== null) return; g.sel = +v; if (g.sel === m.a){ g.ok++; g.xp += g.wr ? 8 : 15; } else { g.wr = true; g.err++; } },
+  'g-wpick':function(v){ var g = S.g, m = WM[g.m], b; if (g.sel !== null) return; g.sel = +v; if (g.sel === m.a){ g.ok++; g.cb++; b = (g.wr ? 8 : 15) + Math.min(g.cb - 1, 5) * 3; g.xp += b; g.last = b; if (g.cb === 5) award('combo', 'Combo-Meister'); } else { g.wr = true; g.err++; g.cb = 0; } },
   'g-hide':function(){ S.g.hid = true; },
-  'g-wclose':function(){ var g = S.g, ok = g.sel === WM[g.m].a; if (ok){ g.done[g.m] = true; g.wr = false; if (g.lv < WM.length - 1){ g.lv++; toast('Level-Up! ' + WM[g.lv].n + ' (' + WM[g.lv].ro + ') ist neu in deinem Team.'); } } g.m = null; g.sel = null; g.hid = false; if (g.done.every(Boolean)){ g.xp += 10; gameDone(); } },
-  spiel:function(v, el){ var id = idOf(el), r = id === 'sim' && S.g && S.g.id === 'sim' && !S.g.fin; S.stack.push({s:'spiel', id:id}); S.g = r ? S.g : newGame(id); if (r){ S.g.m = null; S.g.sel = null; } },
+  'g-goto':function(){ var g = S.g, m = WM[Math.min(g.lv, WM.length - 1)], c = W.cam, dx = c.position.x - m.x, dz = c.position.z - m.z, d = Math.hypot(dx, dz) || 1; W.tg = {x:m.x + dx / d * 2.6, z:m.z + dz / d * 2.6}; W.yaw = Math.atan2(-(m.x - c.position.x), -(m.z - c.position.z)); W.pitch = 0; },
+  'g-wclose':function(){ var g = S.g, i = g.m, ok = g.sel === WM[i].a, k, q; if (ok){ g.done[i] = true; g.wr = false; g.ev = 'Mission geschafft: ' + WM[i].n + ' ist startklar!'; if (i === 0) award('first', 'Erste Mission'); k = PARTS.findIndex(function(x){ return i >= x[0] && i <= x[1]; }); q = PARTS[k]; if (g.done.slice(q[0], q[1] + 1).every(Boolean)){ award('z' + k, 'Zone ' + (k + 1) + ': ' + q[2]); g.ev = 'Zone geschafft: ' + q[2] + '! Neues Abzeichen.'; } if (g.lv < WM.length - 1){ g.lv++; toast('Level-Up! ' + WM[g.lv].n + ' (' + WM[g.lv].ro + ') wartet auf dich.'); } } g.m = null; g.sel = null; g.hid = false; if (g.done.every(Boolean)){ g.xp += 10; if (!g.err) award('perfect', 'Perfektionist'); gameDone(); } },
+  spiel:function(v, el){ var id = idOf(el), r = id === 'sim' && S.g && S.g.id === 'sim' && !S.g.fin && typeof S.g.lv === 'number' && S.g.done.length === WM.length; S.stack.push({s:'spiel', id:id}); S.g = r ? S.g : newGame(id); if (r){ S.g.m = null; S.g.sel = null; } },
   'g-pick':function(v){ var g = S.g, it = GAMES[g.id].items[g.i]; if (g.sel !== null) return; g.sel = +v; if (g.sel === it.a){ g.ok++; g.xp += 10; } },
   'g-ord':function(v){ var g = S.g, n = GAMES[g.id].steps.length; if (g.fin) return; if (+v === g.nx){ g.nx++; if (g.nx === n){ g.xp = Math.max(10, 40 - 8 * g.err); gameDone(); } } else { g.err++; toast('Nicht ganz. Was kommt zuerst?'); } },
   'g-again':function(){ S.g = newGame(S.g.id); },
