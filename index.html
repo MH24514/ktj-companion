@@ -278,6 +278,29 @@ textarea{min-height:86px;resize:vertical;display:block}
 .num.nb{border:0;color:var(--navy-ink)}
 .row .num{align-self:flex-start;margin-top:1px}
 .card .figs{margin-top:12px}
+/* Projekte: Achsen und Business Challenge */
+.axis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.axis button{display:flex;align-items:center;justify-content:center;gap:6px;min-height:44px;border:1px solid var(--line);background:var(--surface);border-radius:8px;font-weight:600;font-size:13px;color:var(--ink);padding:6px}
+.axis button .ic{width:18px;height:18px}
+.axis button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:var(--on-navy)}
+.bcbar{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:3px;margin-top:8px}
+.bcbar i{height:6px;border-radius:3px;background:var(--line)}
+.bcbar i.done{background:var(--muted)}
+.bcbar i.now{background:var(--brand)}
+/* Wochenleiste und Logo */
+.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.wday{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:6px 0 5px;display:grid;justify-items:center;gap:2px;color:var(--ink);min-width:0}
+.wday .wdn{font-size:11px;color:var(--muted);font-weight:600}
+.wday b{font-size:15px;font-variant-numeric:tabular-nums}
+.wday.today b{color:var(--brand-ink)}
+.wday .dots{display:flex;gap:3px;height:6px}
+.wday .dots i{width:6px;height:6px;border-radius:50%}
+.wday[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:var(--on-navy)}
+.wday[aria-pressed="true"] .wdn,.wday[aria-pressed="true"].today b{color:var(--on-navy)}
+.wday[aria-pressed="true"] .dots i{box-shadow:0 0 0 1.5px var(--on-navy)}
+.brand-logo{height:28px;width:auto;display:block;border-radius:4px}
+.hi-l{display:flex;align-items:center;gap:10px}
+.hero-logo{height:22px;width:auto;display:block;border-radius:3px;box-shadow:0 0 0 1px rgba(255,255,255,.35)}
 /* Startseite */
 .hero-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px}
 .hero .hero-row h1{margin-top:0}
@@ -295,6 +318,74 @@ textarea{min-height:86px;resize:vertical;display:block}
 .stat:hover{border-color:var(--muted)}
 .stat b{font-size:22px;font-weight:600;color:var(--ink);line-height:1.15}
 .stat span{font-size:11.5px;color:var(--muted);line-height:1.3}
+/* Was andere dir zutrauen */
+.trust{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:12px}
+.trust-h{display:flex;align-items:center;gap:10px}
+.av.lg{width:40px;height:40px;font-size:13px;background:var(--navy);color:var(--on-navy)}
+.avs-row{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.avs{display:flex}
+.avs .av{margin-left:-3px;box-shadow:0 0 0 2px var(--surface)}
+.avs .av:first-child{margin-left:0}
+.srow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 10px;align-items:center;padding:9px 0 0}
+.srow .fig{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.srow .mbar{grid-column:1 / -1}
+.stats .stat{cursor:default}
+.wcard .av.sm{justify-self:start}
+/* Entwicklungsplan */
+.wizbar{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+.wizbar i{height:6px;border-radius:3px;background:var(--line)}
+.wizbar i.done{background:var(--muted)}
+.wizbar i.now{background:var(--brand)}
+.wiznav{display:flex;gap:10px;padding-bottom:8px}
+.wiznav .btn.primary{flex:1}
+.num.ok{border-color:var(--ok);background:var(--ok-bg);color:var(--ok)}
+.num .ic{width:15px;height:15px}
+.ziel{display:flex;gap:12px;align-items:flex-start}
+.ziel .btn{flex:none}
+.zcheck{width:24px;height:24px;flex:none;border-radius:6px;border:2px solid var(--muted);background:var(--surface);display:grid;place-items:center;padding:0;color:var(--on-navy);margin-top:1px}
+.zcheck[aria-pressed="true"]{background:var(--ok);border-color:var(--ok)}
+.zcheck .ic{width:16px;height:16px}
+/* Themenfelder */
+.tchips{display:flex;flex-wrap:wrap;gap:6px}
+.tchips button{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:600;color:var(--body)}
+.tchips button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:var(--on-navy)}
+/* Termin-Formular */
+.segr{position:relative;display:block}
+.segr input{position:absolute;inset:0;opacity:0;margin:0}
+.segr span{display:grid;place-items:center;min-height:40px;border:1px solid var(--line);border-radius:6px;background:var(--surface);font-weight:600;font-size:13px;color:var(--ink)}
+.segr input:checked + span{background:var(--navy);border-color:var(--navy);color:var(--on-navy)}
+.segr input:focus-visible + span{outline:2px solid var(--navy-ink);outline-offset:2px}
+/* Entwicklung: Weg, Kompetenzen, Wirkung */
+.dirc-s{display:flex;align-items:center;gap:12px;padding:14px 16px}
+.dirc-s .dirc-t{font-size:19px}
+.dirc-s .dirc-a{margin-top:0;flex:none}
+.weg{padding:2px 14px}
+.weg-i{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;background:none;border:0;padding:11px 0;position:relative;color:inherit}
+.weg-i::before{content:"";position:absolute;left:6px;top:28px;bottom:-14px;width:2px;background:var(--line)}
+.weg-i:last-child::before{display:none}
+.weg-i .chev{align-self:center}
+.weg-dot{width:14px;height:14px;border-radius:50%;flex:none;margin-top:16px;border:2px solid var(--muted);background:var(--surface);position:relative;z-index:1}
+.weg-dot.done{background:var(--muted)}
+.weg-dot.now{border-color:var(--brand);background:var(--brand);box-shadow:0 0 0 4px var(--surface),0 0 0 6px var(--brand)}
+.weg-dot.goal{border-color:var(--navy-ink)}
+.klegend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--muted);margin-bottom:6px}
+.klegend i{display:inline-block;margin-right:6px;vertical-align:-1px}
+.lg-h{width:14px;height:8px;border-radius:4px;background:var(--navy-ink)}
+.lg-s{width:3px;height:12px;border-radius:2px;background:var(--surface);box-shadow:0 0 0 1.5px var(--muted)}
+.lg-m{width:11px;height:11px;border-radius:50%;background:var(--surface);border:2.5px solid var(--brand)}
+.kr{padding-top:12px}
+.kr-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.kr-v{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.ktrack{position:relative;height:10px;border-radius:5px;background:var(--sky-tint);margin:8px 0 5px}
+.kfill{position:absolute;left:0;top:0;bottom:0;border-radius:5px;background:var(--navy-ink)}
+.kstart{position:absolute;top:-3px;width:3px;height:16px;margin-left:-1.5px;border-radius:2px;background:var(--surface);box-shadow:0 0 0 1.5px var(--muted)}
+.kmarc{position:absolute;top:-3px;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:var(--surface);border:3px solid var(--brand)}
+.kscale{display:flex;justify-content:space-between;margin-top:10px;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.wstat{display:flex;align-items:baseline;gap:8px;margin-bottom:8px}
+.wstat b{font-size:24px;font-weight:600;color:var(--ink)}
+.wall{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
+.wcard{flex:0 0 82%;scroll-snap-align:start;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:10px;align-content:start;min-width:0}
+.wcard.pend{border-style:dashed;background:transparent}
 /* Richtung-Karte */
 .dirc{width:100%;text-align:left;border:0;border-radius:12px;background:var(--navy);color:var(--on-navy);padding:16px;display:block}
 .dirc-l{font-size:12.5px;font-weight:600;opacity:.8}
@@ -361,6 +452,7 @@ var PATHS = {
   lock:'<rect x="6" y="11" width="12" height="9" rx="2"/><path d="M9 11V8a3 3 0 0 1 6 0v3"/>',
   eye:'<path d="M2.5 12s3.5-6.5 9.5-6.5 9.5 6.5 9.5 6.5-3.5 6.5-9.5 6.5S2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.8"/>',
   cal:'<rect x="4" y="5.5" width="16" height="14" rx="2"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/>', person:'<circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.6 3.8-5.5 7-5.5s5.8 1.9 7 5.5"/>',
+  hor:'<path d="M4 12h16M7.5 8.5L4 12l3.5 3.5M16.5 8.5L20 12l-3.5 3.5"/>', ver:'<path d="M12 4v16M8.5 7.5L12 4l3.5 3.5M8.5 16.5L12 20l3.5-3.5"/>',
   x:'<path d="M6 6l12 12M18 6L6 18"/>', info:'<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 8v.2"/>'
 };
 function ic(n){ return '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + PATHS[n] + '</svg>'; }
@@ -421,13 +513,14 @@ var PROJ = {
 var BOARD = ['listing','anleger','ebill','esg','ki'];
 var INTERVIEWS = ['Interview 1: Leiterin Zahlungsverkehr, Kantonalbank','Interview 2: COO, Regionalbank','Interview 3: CFO, Maschinenbau-KMU','Interview 4: Produktmanager, Privatbank','Interview 5: Leiter Zahlungsverkehr, Regionalbank','Interview 6: Risk Officer, Kantonalbank'];
 var TEAM = [['LB','Lena Baumann'],['MR','Mateo Ruiz'],['ZK','Zofia Kowalska'],['DM','David Meier'],['AD','Aylin Demir']];
+var BC_TITEL = 'Instant Payments für kleine Banken';
 var FRAGE = 'Warum bieten kleine Banken ihren Firmenkunden Instant Payments nur zögerlich an, und was kann SIX dazu beitragen?';
 var SLOT_OPT = ['Mi, 25. Nov. | 9–11 Uhr','Do, 26. Nov. | 14–16 Uhr','Mo, 30. Nov. | 9–12 Uhr','Mi, 2. Dez. | 13–16 Uhr'];
 var ALT_OPT = ['Mi, 2. Dez. | 9–12 Uhr','Do, 3. Dez. | 13–16 Uhr','Fr, 4. Dez. | 9–12 Uhr'];
 var SCALES = [['sinn','Diese Erfahrung hat mir geholfen, den Sinn meines Beitrags zu sehen.'],['rolle','Ich verstehe meine Rolle bei SIX klarer als vorher.']];
 
 function seed(){ var st = {
-  v:VERSION, role:'six', tab:'journey', stack:[], sheet:null, filter:'Alle', timeline:false, lmSel:'lena', lmForm:null, n:100, calM:0, calSel:'2026-11-20',
+  v:VERSION, role:'six', tab:'journey', stack:[], sheet:null, filter:'Alle', timeline:false, lmSel:'lena', lmForm:null, n:100, calM:0, calSel:'2026-11-20', projAxis:'h',
   slots:[
     {id:'s3', zweck:'Fokuszeit: Reflexion und Coaching-Vorbereitung', datum:'Fr, 20. Nov.', zeit:'9–11 Uhr', status:'ersatz', ersatz:{datum:'Mo, 23. Nov.', zeit:'9–11 Uhr', grund:'Am Freitag ist Quartalsabschluss.'}},
     {id:'s2', zweck:'Business Challenge: Prämissen im Team prüfen', datum:'Di, 1. Dez.', zeit:'9–12 Uhr', status:'angefragt'},
@@ -473,7 +566,7 @@ function seed(){ var st = {
   ],
   plan:{ richtung:'fach', notiz:'Kundenerlebnis und Daten. Führung schliesse ich nicht aus, ich will aber zuerst fachlich tiefer gehen.',
     anschluss:{status:'entwurf', titel:'Übergaben im eigenen Kunden-Onboarding neu gestalten', ergebnis:'Getesteter neuer Ablauf für ein Kundensegment, vorgestellt im Führungsteam Client Operations', nutzer:'Team Client Operations, Marc Steiner', bis:'Ende April', lm:''},
-    log:[['9. Nov.','Zwei Kolleginnen aus dem Onboarding für das Vorhaben gewonnen.']], wirkung:false, kontakte:{} },
+    log:[['9. Nov.','Zwei Kolleginnen aus dem Onboarding für das Vorhaben gewonnen.']], wirkung:false, kontakte:{}, termine:{}, themen:['kunden','daten'], seen:{}, marc:{}, ziele:[{id:'z1', text:'Business & Network Leadership stärken: zwei Kundengespräche pro Monat begleiten', bis:'Ende Januar', done:false}] },
   feed:[['12. Nov.','Lab 10 besucht: Understanding Customers'],['10. Nov.','Eine Prämisse in der Business Challenge geprüft'],['2. Nov.','Standortgespräch geführt, Richtung: Fachperspektive'],['30. Okt.','Reflexion zum Einsatz abgeschlossen und mit dir geteilt'],['30. Okt.','Wirkungsgespräch mit Sofia Marín geführt'],['16. Okt.','Reflexion nach Lab 9 abgeschlossen (privat)']],
   tomasz:{kap:'angefragt'}
 }; hook('seed', st); return st; }
@@ -507,7 +600,7 @@ function homeTasks(){
   if (S.offen.length) t.push(['go','schreiben',S.offen[0].id,S.offen[0].titel,'Reflexion offen, ' + S.offen[0].faellig]);
   S.slots.forEach(function(s){ if (s.status === 'ersatz') t.push(['tab','lernzeit','','Marc schlägt einen Ersatztermin vor',s.ersatz.datum + ', ' + s.ersatz.zeit]); });
   var o = count(S.praemissen, function(p){ return p.status === 'offen'; });
-  if (o) t.push(['go','challenge','','Business Challenge: ' + o + (o === 1 ? ' Prämisse' : ' Prämissen') + ' noch offen','Schritt 3 von 4, Prämissen prüfen']);
+  if (o) t.push(['go','challenge','','Business Challenge: ' + o + (o === 1 ? ' Prämisse' : ' Prämissen') + ' noch offen','Schritt 4 von 6, Präsentation am 28. Jan.']);
   if (S.plan.anschluss.status === 'entwurf') t.push(['go','anschluss','','Anschlusserfahrung fertigstellen','Der Entwurf liegt noch nicht bei Marc']);
   S.einsaetze.forEach(function(e){ if (e.status === 'bestaetigt') t.push(['go','einsatz',e.pid,'Einsatz bestätigt: ' + PROJ[e.pid].t,'Start am ' + PROJ[e.pid].start]); });
   hook('homeTasks', t);
@@ -527,20 +620,16 @@ function scrJourney(){
   var refl = 8 + S.journal.length, gepr = count(S.praemissen, function(x){ return x.status !== 'offen'; });
   var C = 2 * Math.PI * 26, off = C * (1 - pct / 100);
   var ring = '<div class="ring" role="img" aria-label="' + pct + ' Prozent der Journey geschafft"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="26" class="ring-bg"/><circle cx="32" cy="32" r="26" class="ring-fg" stroke-dasharray="' + C.toFixed(1) + '" stroke-dashoffset="' + off.toFixed(1) + '" transform="rotate(-90 32 32)"/></svg><span class="ring-num" aria-hidden="true">' + pct + '<small>&nbsp;%</small></span></div>';
-  var h = '<div class="hero gut"><div class="hi"><span>Montag, 16. November</span><span class="av">LB</span></div><div class="hero-row"><div><h1 tabindex="-1">Hallo Lena</h1><p>Monat ' + MONAT + ' von 16 deiner Key Talent Journey</p></div>' + ring + '</div></div>';
+  var h = '<div class="hero gut"><div class="hi"><span class="hi-l">' + (LOGO ? '<img class="hero-logo" src="six-logo.png" alt="SIX">' : '') + '<span>Montag, 16. November</span></span><span class="av">LB</span></div><div class="hero-row"><div><h1 tabindex="-1">Hallo Lena</h1><p>Monat ' + MONAT + ' von 16 deiner Key Talent Journey</p></div>' + ring + '</div></div>';
   h += '<div class="gut lift"><div class="panel in"><div class="track" role="img" aria-label="Monat 13 von 16, Phase Business und Network Leadership">' + cells + '</div>'
     + '<div class="track-ends"><span>Monat 1</span><span>Monat 16</span></div>'
     + '<p class="mt14"><span class="sw ' + ph.c + '"></span><span class="t">' + esc(ph.n) + '</span></p><p class="m">' + esc(ph.d) + '</p>'
     + '<p class="mt10"><button class="linkbtn" data-a="timeline">' + (S.timeline ? 'Überblick schliessen' : 'Ganze Journey ansehen') + '</button></p>'
     + (S.timeline ? timeline() : '') + '</div></div>';
-  var nx = calEvents().filter(function(e){ return e.k >= TODAY; }).sort(function(x, y){ return x.k < y.k ? -1 : x.k > y.k ? 1 : 0; })[0];
-  if (nx){
-    var MS = {11:'Nov', 12:'Dez', 1:'Jan'};
-    h += sec('Nächster Termin', '<div class="panel rows">' + row('tab', 'lernzeit', '', nx.t, nx.z, '', '<span class="datebox"><b>' + (+nx.k.slice(8)) + '</b><span>' + MS[+nx.k.slice(5, 7)] + '</span></span>') + '</div>');
-  }
+  h += weekHTML();
   h += sec('Als Nächstes', tasks.length ? '<div class="panel rows">' + tasks.map(function(t){ return row(t[0], t[1], t[2], t[3], t[4]); }).join('') + '</div>' : '<div class="panel in">Alles erledigt. Neue Aufgaben erscheinen hier.</div>');
-  var st = [['projekte', done, done === 1 ? 'Einsatz abgeschlossen' : 'Einsätze abgeschlossen'], ['reflexion', refl, 'Reflexionen geschrieben'], ['reflexion', gepr + '/' + S.praemissen.length, 'Prämissen geprüft']];
-  h += sec('Dein Stand', '<div class="stats">' + st.map(function(x){ return '<button class="stat" data-a="tab" data-v="' + x[0] + '"><b>' + x[1] + '</b><span>' + x[2] + '</span></button>'; }).join('') + '</div>');
+  var st = [['projekte', done, done === 1 ? 'Einsatz abgeschlossen' : 'Einsätze abgeschlossen'], ['reflexion', refl, 'Reflexionen geschrieben'], ['challenge', gepr + '/' + S.praemissen.length, 'Prämissen geprüft']];
+  h += sec('Dein Stand', '<div class="stats">' + st.map(function(x){ return '<button class="stat" data-a="' + (x[0] === 'challenge' ? 'go' : 'tab') + '" data-v="' + x[0] + '"><b>' + x[1] + '</b><span>' + x[2] + '</span></button>'; }).join('') + '</div>');
   return h;
 }
 
@@ -553,12 +642,16 @@ function calEvents(){
   var ev = [];
   S.slots.forEach(function(s){ ev.push(s.status === 'ersatz' ? {k:dkey(s.ersatz.datum), t:s.zweck, z:s.ersatz.zeit, st:'ersatz'} : {k:dkey(s.datum), t:s.zweck, z:s.zeit, st:s.status}); });
   S.transfer.forEach(function(t){ ev.push({k:dkey(t.termin), t:'Transfergespräch nach ' + t.lab, z:'15 Minuten mit Marc', st:'transfer'}); });
+  Object.keys(S.plan.marc || {}).forEach(function(k){ var m = S.plan.marc[k]; ev.push({k:dkey(m.datum), t:'Mit Marc: ' + MARC_T[k][0], z:m.zeit + ', ' + m.format, st:m.status === 'bestaetigt' ? 'bestaetigt' : 'angefragt'}); });
+  Object.keys(S.plan.termine || {}).forEach(function(id){ var t = S.plan.termine[id]; ev.push({k:dkey(t.datum), t:'Vorstellung: ' + t.abt, z:t.zeit + ', ' + t.format, st:'angefragt'}); });
+  ev.push({k:'2026-11-18', t:'Leadership Talk mit dem People Board', z:'17–18 Uhr, online', st:'bestaetigt'});
   ev.push({k:'2027-01-21', t:'Lab 12', z:'14–18 Uhr', st:'bestaetigt'});
+  ev.push({k:'2027-01-28', t:'Business Challenge: Präsentation vor der Geschäftsleitung', z:'10–11 Uhr', st:'bestaetigt'});
   return ev.filter(function(e){ return e.k; });
 }
 var EV_PILL = {bestaetigt:['ok','Bestätigt'], angefragt:['warn','Angefragt bei Marc'], ersatz:['info','Ersatztermin vorgeschlagen'], transfer:['neutral','Transfergespräch']};
 var EV_DOT = {bestaetigt:'d-ok', angefragt:'d-warn', ersatz:'d-ersatz', transfer:'d-transfer'};
-function calHTML(){
+function calInner(){
   var cm = CAL_M[S.calM], y = cm[0], m = cm[1], by = {}, d, k, e, i;
   calEvents().forEach(function(x){ (by[x.k] = by[x.k] || []).push(x); });
   var first = (new Date(y, m - 1, 1).getDay() + 6) % 7, days = new Date(y, m, 0).getDate();
@@ -572,19 +665,38 @@ function calHTML(){
   if (!S.calSel || S.calSel.slice(0, 7) !== y + '-' + pad(m)) list = '<p class="m">Tippe auf einen Tag, um seine Termine zu sehen.</p>';
   else if (!sel) list = '<p class="m">Keine Termine am ' + lab + '.</p>';
   else list = '<p class="m">' + lab + '</p>' + sel.map(function(x){ var p = EV_PILL[x.st]; return '<div class="cal-ev"><p class="t">' + esc(x.t) + '</p><p class="m">' + esc(x.z) + '</p><p class="mt6">' + pill(p[0], p[1]) + '</p></div>'; }).join('');
-  return sec('Kalender', '<div class="panel in"><div class="cal-head"><span class="t">' + cm[2] + '</span><span class="cal-nav"><button data-a="cal-m" data-v="-1" aria-label="Vorheriger Monat"' + (S.calM === 0 ? ' disabled' : '') + '>' + ic('back') + '</button><button data-a="cal-m" data-v="1" aria-label="Nächster Monat"' + (S.calM === CAL_M.length - 1 ? ' disabled' : '') + '>' + ic('chev') + '</button></span></div>'
-    + '<div class="cal">' + g + '</div><div class="cal-legend"><span><i class="d-ok"></i>Bestätigt</span><span><i class="d-warn"></i>Angefragt</span><span><i class="d-ersatz"></i>Ersatztermin</span><span><i class="d-transfer"></i>Transfergespräch</span></div><div class="cal-day">' + list + '</div></div>');
+  return '<div class="cal-head"><span class="t">' + cm[2] + '</span><span class="cal-nav"><button data-a="cal-m" data-v="-1" aria-label="Vorheriger Monat"' + (S.calM === 0 ? ' disabled' : '') + '>' + ic('back') + '</button><button data-a="cal-m" data-v="1" aria-label="Nächster Monat"' + (S.calM === CAL_M.length - 1 ? ' disabled' : '') + '>' + ic('chev') + '</button></span></div>'
+    + '<div class="cal">' + g + '</div><div class="cal-legend"><span><i class="d-ok"></i>Bestätigt</span><span><i class="d-warn"></i>Angefragt</span><span><i class="d-ersatz"></i>Ersatztermin</span><span><i class="d-transfer"></i>Transfergespräch</span></div><div class="cal-day">' + list + '</div>';
 }
+function calHTML(){ return sec('Kalender', '<div class="panel in">' + calInner() + '</div>'); }
+
+var WD = ['So','Mo','Di','Mi','Do','Fr','Sa'], WEEK_FROM = '2026-11-16', WEEK_TO = '2026-11-22';
+function evList(list){ return list.map(function(x){ var p = EV_PILL[x.st]; return '<div class="cal-ev"><p class="t">' + esc(x.t) + '</p><p class="m">' + esc(x.z) + '</p><p class="mt6">' + pill(p[0], p[1]) + '</p></div>'; }).join(''); }
+function weekHTML(){
+  var by = {}, cells = '', i, d, k, e;
+  calEvents().forEach(function(x){ (by[x.k] = by[x.k] || []).push(x); });
+  for (i = 0; i < 7; i++){
+    d = new Date(2026, 10, 16 + i); k = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); e = by[k] || [];
+    cells += '<button class="wday' + (k === TODAY ? ' today' : '') + '" data-a="cal-d" data-v="' + k + '" aria-pressed="' + (S.calSel === k) + '" aria-label="' + d.getDate() + '. ' + MON_NAME[d.getMonth() + 1] + (e.length ? ', ' + e.length + (e.length === 1 ? ' Termin' : ' Termine') : '') + '"><span class="wdn">' + WD[d.getDay()] + '</span><b>' + d.getDate() + '</b><span class="dots">' + e.slice(0, 3).map(function(x){ return '<i class="' + EV_DOT[x.st] + '"></i>'; }).join('') + '</span></button>';
+  }
+  var inWeek = S.calSel && S.calSel >= WEEK_FROM && S.calSel <= WEEK_TO, sel = inWeek ? (by[S.calSel] || []) : [], list;
+  if (S.calOpen) return sec('Kalender', '<div class="panel in">' + calInner() + '<p class="mt10"><button class="linkbtn" data-a="cal-toggle">Kalender einklappen</button></p></div>');
+  if (!inWeek) list = '<p class="m">Tippe auf einen Tag, um seine Termine zu sehen.</p>';
+  else if (!sel.length) list = '<p class="m">Keine Termine an diesem Tag.</p>';
+  else list = evList(sel);
+  return sec('Diese Woche', '<div class="panel in"><div class="week">' + cells + '</div><div class="cal-day">' + list + '</div><p class="mt10"><button class="linkbtn" data-a="cal-toggle">Ganzen Kalender ausklappen</button></p></div>');
+}
+function scrKalender(){ return top('Kalender', 'Alle Termine deiner Journey', null, true) + calHTML(); }
 
 /* ---------- SIXplorer: Lernzeit ---------- */
 function scrLernzeit(){
-  var h = top('Lernzeit') + calHTML();
+  var h = top('Lernzeit');
   var rows = S.slots.map(function(s){
     var r = '<div><p class="t">' + esc(s.zweck) + '</p><p class="m">' + esc(s.datum + ', ' + s.zeit) + '</p><p class="mt6">' + slotPill(s) + '</p>';
     if (s.status === 'ersatz') r += '<div class="note mt10">' + ic('info') + '<span>Marc schlägt ' + esc(s.ersatz.datum + ', ' + s.ersatz.zeit) + ' vor. ' + esc(s.ersatz.grund) + '</span></div><div class="actions"><button class="btn primary small" data-a="slot-annehmen" data-id="' + s.id + '">Ersatztermin annehmen</button><button class="btn ghost small" data-a="sheet" data-v="lernzeit">Anderen Termin anfragen</button></div>';
     return r + '</div>';
   }).join('');
-  h += sec('Deine nächsten Termine', '<div class="panel rows">' + rows + '</div><button class="btn primary block mt10" data-a="sheet" data-v="lernzeit">Lernzeit anfragen</button>');
+  h += sec('Deine nächsten Termine', '<div class="panel rows">' + rows + '</div><button class="btn primary block mt10" data-a="sheet" data-v="lernzeit">Lernzeit anfragen</button><p class="mt10"><button class="linkbtn" data-a="cal-open-home">Alle Termine im Kalender ansehen</button></p>');
   h += sec('Vereinbarung vor dem Kick-off', '<div class="panel in"><div class="agree">'
     + [['cal','14–18 Uhr','Lab-Nachmittage'],['zeit','Fr, 9–11 Uhr','Fokuszeit pro Woche'],['person','Jonas Frei','Vertretung']].map(function(a){ return '<div>' + ic(a[0]) + '<b>' + a[1] + '</b><span>' + a[2] + '</span></div>'; }).join('')
     + '</div><div class="agree-foot">' + pill('ok','Vereinbart mit Marc','check') + '<span>28. Sept.</span></div></div>');
@@ -600,8 +712,21 @@ function scrLernzeit(){
 }
 
 /* ---------- SIXplorer: Projekte ---------- */
+var BC_STEPS = [['Auftrag der Geschäftsleitung erhalten','6. Okt.'],['Prämissen festhalten','14. Okt.'],['Gespräche führen','bis 6. Nov.'],['Prämissen prüfen','bis 3. Dez.'],['Lösung entwickeln','bis 14. Jan.'],['Präsentation vor der Geschäftsleitung','28. Jan.']], BC_NOW = 3;
+function bcBar(){ return '<div class="bcbar" role="img" aria-label="Schritt ' + (BC_NOW + 1) + ' von ' + BC_STEPS.length + '">' + BC_STEPS.map(function(x, i){ return '<i class="' + (i < BC_NOW ? 'done' : i === BC_NOW ? 'now' : '') + '"></i>'; }).join('') + '</div>'; }
 function scrProjekte(){
-  var h = top('Project Board', '', 1);
+  var ax = S.projAxis === 'v' ? 'v' : 'h';
+  var h = top('Projekte', '', ax === 'v' ? 2 : 1);
+  h += sec('', '<div class="axis">' + [['h','hor','Project Board'],['v','ver','Business Challenge']].map(function(a){ return '<button data-a="axis" data-v="' + a[0] + '" aria-pressed="' + (ax === a[0]) + '">' + ic(a[1]) + a[2] + '</button>'; }).join('') + '</div>'
+    + '<p class="m mt10">' + (ax === 'h' ? 'Horizontal: kurze Einsätze in anderen Bereichen und an anderen Standorten von SIX.' : 'Vertikal: ein Auftrag der Geschäftsleitung, den ihr als Team löst und am Ende vor dem Management präsentiert.') + '</p>');
+  if (ax === 'v'){
+    var o = count(S.praemissen, function(p){ return p.status === 'offen'; });
+    h += sec('Deine Business Challenge', '<div class="panel rows">' + row('go', 'challenge', '', BC_TITEL, 'Auftrag von Elena Vidal, Geschäftsleitung', bcBar() + '<span class="m blk mt6">Schritt ' + (BC_NOW + 1) + ' von ' + BC_STEPS.length + ': ' + BC_STEPS[BC_NOW][0] + '</span><span class="inline mt6">' + pill('info', 'Präsentation am 28. Jan.') + (o ? pill('open', o + ' Prämissen offen') : '') + '</span>') + '</div>');
+    h += sec('Was aus früheren Challenges wurde', '<div class="panel rows">'
+      + '<div><p class="m">Kohorte 2025, präsentiert im März 2026</p><p class="t">Wie erreicht SIX junge Privatanleger?</p><p class="ink mt6">Daraus entstand der Pilot zur Anlegerbildung in Madrid. Er steht heute auf dem Project Board.</p></div>'
+      + '<div><p class="m">Kohorte 2024, präsentiert im Februar 2025</p><p class="t">Wo verlieren Datenkunden beim Onboarding Zeit?</p><p class="ink mt6">Zwei Vorschläge sind heute Standard im Onboarding von Financial Information.</p></div></div>');
+    return h;
+  }
   h += sec('Deine Einsätze', '<div class="panel rows">' + S.einsaetze.map(function(e){ var p = PROJ[e.pid]; return row('go', 'einsatz', e.pid, p.t, p.bu + ', ' + p.ort, '<span class="blk mt6">' + einsatzPill(e) + '</span>'); }).join('') + '</div>');
   var chips = ['Alle','Exchanges','Banking Services','Financial Information','IT'];
   var list = BOARD.filter(function(id){ return !find(S.einsaetze, 'pid', id) && (S.filter === 'Alle' || PROJ[id].bu === S.filter); });
@@ -635,7 +760,6 @@ function scrReflexion(){
   var o = count(S.praemissen, function(p){ return p.status === 'offen'; });
   var h = top('Reflexion', '', 2);
   h += '<div class="gut mt14"><div class="note">' + ic('lock') + '<span>Deine Einträge sind privat. Marc sieht, dass du reflektiert hast, aber nicht, was du geschrieben hast. Einzelne Einträge kannst du freigeben.</span></div></div>';
-  h += sec('Business Challenge', '<div class="panel rows">' + row('go', 'challenge', '', FRAGE, 'Schritt 3 von 4, Prämissen prüfen', '<span class="blk mt6">' + (o ? pill('open', o + ' von ' + S.praemissen.length + ' Prämissen offen') : pill('ok', 'Alle Prämissen geprüft', 'check')) + '</span>') + '</div>');
   h += sec('Offene Reflexionen', S.offen.length ? '<div class="panel rows">' + S.offen.map(function(r){ return row('go', 'schreiben', r.id, r.titel, r.faellig); }).join('') + '</div>' : '<div class="panel in">Keine offenen Reflexionen. Die nächste kommt nach Lab 11.</div>');
   h += sec('Journal', '<div class="panel rows">' + S.journal.map(function(j){ return row('go', 'eintrag', j.id, j.titel, j.datum, '<span class="blk mt6">' + (j.geteilt ? pill('info', 'Mit Marc geteilt', 'eye') : pill('neutral', 'Privat', 'lock')) + '</span>'); }).join('') + '</div><p class="hint">Dazu 8 ältere Einträge seit dem Start.</p>');
   return h;
@@ -666,15 +790,18 @@ function scrEintrag(x){
 function scrChallenge(){
   var st = {offen:0, bestaetigt:0, angepasst:0, widerlegt:0};
   S.praemissen.forEach(function(p){ st[p.status]++; });
-  var h = top('Business Challenge', 'Team 3 mit Sponsorin Elena Vidal, Banking Services', null, true);
-  h += sec('', '<div class="panel in"><p class="quote">' + esc(FRAGE) + '</p><div class="inline mt10">' + TEAM.map(function(t){ return '<span class="av sm" title="' + t[1] + '">' + t[0] + '</span>'; }).join('') + '</div>'
-    + '<ol class="steps mt14"><li class="done">Prämissen festhalten</li><li class="done">Interviews führen</li><li class="now">Prämissen prüfen</li><li>Output entwickeln</li></ol></div>');
+  var h = top('Business Challenge', 'Auftrag der Geschäftsleitung an Team 3', null, true);
+  h += sec('', '<div class="panel in"><p class="m">Der Auftrag</p><p class="quote mt6">' + esc(FRAGE) + '</p>'
+    + '<div class="mt14">' + kv([['Auftraggeberin', 'Elena Vidal, Head Banking Services, Mitglied der Geschäftsleitung'], ['Euer Team', TEAM.map(function(t){ return t[1]; }).join(', ')]]) + '</div>'
+    + '<div class="mt14">' + bcBar() + '</div><p class="t mt10">Schritt ' + (BC_NOW + 1) + ' von ' + BC_STEPS.length + ': ' + BC_STEPS[BC_NOW][0] + '</p><p class="m">Als Nächstes: ' + BC_STEPS[BC_NOW + 1][0] + '</p></div>');
+  h += sec('Präsentation vor der Geschäftsleitung', '<div class="panel in">' + kv([['Wann', 'Do, 28. Jan., 10 bis 11 Uhr, Zürich'], ['Ablauf', '15 Minuten Präsentation, 15 Minuten Fragen der Geschäftsleitung'], ['Probedurchlauf', 'Do, 21. Jan. mit Elena Vidal']]) + '<p class="mt10">' + pill('info', 'In 10 Wochen') + '</p></div><p class="hint">Wie bei einem Shadow Board landet euer Ergebnis direkt bei denen, die entscheiden.</p>');
   h += sec('Unsere Prämissen', '<div class="inline mb8">' + pill('open', st.offen + ' offen') + pill('neutral', st.bestaetigt + ' bestätigt') + pill('info', st.angepasst + ' angepasst') + pill('solid', st.widerlegt + ' widerlegt') + '</div>'
     + '<div class="panel rows">' + S.praemissen.map(function(p){
         var meta = p.erk.length + (p.erk.length === 1 ? ' Erkenntnis' : ' Erkenntnisse') + ', ' + p.kom.length + (p.kom.length === 1 ? ' Kommentar' : ' Kommentare');
         return row('go', 'praemisse', p.id, p.text, meta, '<span class="blk mt6">' + prPill(p.status) + '</span>');
-      }).join('') + '</div><button class="btn ghost block mt10" data-a="sheet" data-v="praemisse">Prämisse hinzufügen</button>');
-  h += sec('Feedback der Sponsorin', '<div class="panel rows"><div><p class="m">Nach dem Festhalten der Prämissen, 14. Okt.</p><p class="ink mt6">Eure Prämissen sind stark aus der Innensicht von SIX formuliert. Achtet in den Interviews darauf, wo die Banken andere Wörter benutzen als ihr.</p></div><div><p class="m">Nach der Prüfung der Prämissen</p><p class="mt6">' + pill('neutral', 'Geplant am 3. Dez.') + '</p></div></div><p class="hint">Elena Vidal hinterfragt eure Annahmen, gibt aber keine Lösung vor.</p>');
+      }).join('') + '</div><p class="hint">Festgehalten, bevor ihr mit Banken und Firmenkunden gesprochen habt. Jetzt prüft ihr, was davon stimmt.</p><button class="btn ghost block mt10" data-a="sheet" data-v="praemisse">Prämisse hinzufügen</button>');
+  h += sec('Ablauf', '<div class="panel in"><ol class="vl">' + BC_STEPS.map(function(x, i){ return '<li><span class="dot ' + (i < BC_NOW ? 'done' : i === BC_NOW ? 'now' : '') + '"></span><span><span class="t blk">' + (i + 1) + '. ' + x[0] + '</span><span class="m blk">' + x[1] + '</span></span></li>'; }).join('') + '</ol></div>');
+  h += sec('Feedback der Auftraggeberin', '<div class="panel rows"><div><p class="m">Nach dem Festhalten der Prämissen, 14. Okt.</p><p class="ink mt6">Eure Prämissen sind stark aus der Innensicht von SIX formuliert. Achtet in den Gesprächen darauf, wo die Banken andere Wörter benutzen als ihr.</p></div><div><p class="m">Nach der Prüfung der Prämissen</p><p class="mt6">' + pill('neutral', 'Geplant am 3. Dez.') + '</p></div></div><p class="hint">Elena Vidal hinterfragt eure Annahmen, gibt aber keine Lösung vor.</p>');
   return h;
 }
 function scrPraemisse(x){
@@ -688,7 +815,7 @@ function scrPraemisse(x){
     + (neu ? '<form class="mt10" data-f="heute" data-id="' + p.id + '"><label class="f" for="ph">So sehen wir es heute</label><textarea id="ph" name="heute" required>' + esc(p.heute) + '</textarea><label class="f" for="pw">Warum hatten wir das angenommen?</label><textarea id="pw" name="warum">' + esc(p.warum) + '</textarea><button class="btn primary block mt10" type="submit">Neue Sicht speichern</button></form>' : ''));
   h += sec('Erkenntnisse aus den Interviews', (p.erk.length ? '<div class="panel rows">' + p.erk.map(function(e){ return '<div><p class="quote">' + esc(e[1]) + '</p><p class="m mt6">' + esc(INTERVIEWS[e[0]]) + '</p></div>'; }).join('') + '</div>' : '<div class="panel in">Noch keine Erkenntnis zugeordnet. Welche Aussage aus den Interviews stützt oder widerlegt diese Prämisse?</div>')
     + '<button class="btn ghost block mt10" data-a="sheet" data-v="erkenntnis" data-id="' + p.id + '">Erkenntnis zuordnen</button>');
-  if (p.sponsor) h += sec('Frage der Sponsorin', '<div class="panel in"><p class="quote">' + esc(p.sponsor) + '</p><p class="m mt6">Elena Vidal</p></div>');
+  if (p.sponsor) h += sec('Frage der Auftraggeberin', '<div class="panel in"><p class="quote">' + esc(p.sponsor) + '</p><p class="m mt6">Elena Vidal</p></div>');
   h += sec('Kommentare im Team', (p.kom.length ? '<div class="panel rows">' + p.kom.map(function(k){ return '<div><p class="m">' + esc(k[0]) + '</p><p class="ink">' + esc(k[1]) + '</p></div>'; }).join('') + '</div>' : '')
     + '<form class="mt10" data-f="kommentar" data-id="' + p.id + '"><label class="f" for="pk">Dein Kommentar</label><textarea id="pk" name="text" required></textarea><button class="btn ghost block mt10" type="submit">Kommentieren</button></form>');
   return h;
@@ -703,25 +830,153 @@ var EVID = [['einsatz','onb','projekte','Einsatz: Onboarding neuer Datenkunden',
 var ROL = {fach:[['Product Owner Client Onboarding','Financial Information, Zürich','Sofia Marín'],['Data Analyst Kundenerlebnis','Financial Information, Zürich','Daniel Roth'],['Specialist Client Experience','Exchanges, Zürich','Claire Dubois']],
   fuehrung:[['Teamleitung Client Operations','Securities Services, Zürich','Marc Steiner'],['Projektleitung Onboarding-Redesign','Financial Information, Zürich','Sofia Marín'],['Mitglied im Shadow Board','Bereichsübergreifend, berät die Geschäftsleitung','People Board']],
   offen:[['Zweiter Einsatz über das Project Board','Ausserhalb von Securities Services','Journey-Team'],['Job Shadowing bei einer Teamleitung','Securities Services, Zürich','Marc Steiner'],['Gespräch mit einer früheren SIXplorerin','Exchanges, Zürich','Claire Dubois']]};
+var THEMEN = [['kunden','Kunden & Produkte'],['daten','Daten & Analytics'],['boerse','Börse & Märkte'],['tech','Technologie & IT'],['ops','Operations & Prozesse'],['risk','Risk & Compliance']];
+var ABT = [
+  ['fi-onb','Client Onboarding & Data Quality','Financial Information, Zürich','Ihr verbessert, wie neue Kunden zu ihren Daten kommen. Nah an deinem Einsatz vom Oktober.','Sofia Marín, Teamleiterin',['kunden','daten'],'Fach- und Führungsrollen'],
+  ['bs-ebill','Product Management eBill','Banking Services, Zürich','Ihr entwickelt eBill für Banken und Unternehmen weiter. Viel Kundenkontakt.','Nina Graf, Product Lead',['kunden'],'Vor allem Fachrollen'],
+  ['ex-lis','Listing & Issuer Services','Exchanges, Zürich','Ihr begleitet Unternehmen auf dem Weg an die Börse und arbeitet direkt mit Emittenten.','Claire Dubois, Head Listing',['boerse','kunden'],'Fach- und Führungsrollen'],
+  ['ex-edu','Investor Education','Exchanges, Madrid','Ihr erklärt Privatanlegern den Börsenhandel. Anderer Standort, andere Kunden.','Javier Ortega, Teamleiter',['boerse','kunden'],'Vor allem Fachrollen'],
+  ['fi-esg','ESG Data','Financial Information, Zürich','Ihr sorgt dafür, dass Asset Manager den Nachhaltigkeitsdaten vertrauen können.','Daniel Roth, Head ESG Data',['daten','risk'],'Teamleitung wird 2027 frei'],
+  ['it-plat','Platform Engineering','IT, Warschau, remote möglich','Ihr baut die Plattformen, auf denen SIX läuft.','Pawel Zielinski, Engineering Lead',['tech','daten'],'Vor allem Fachrollen'],
+  ['it-ai','AI & Automation','IT, Zürich','Ihr bringt KI-Anwendungen in die Abläufe von SIX.','Lukas Brunner, Lead AI',['tech','daten'],'Fach- und Führungsrollen'],
+  ['ss-set','Settlement Operations','Securities Services, Zürich','Ein Team von zwölf Personen, das die Abwicklung von Wertschriften sicherstellt.','Reto Kunz, Head Settlement',['ops'],'Teamleitung wird 2027 frei'],
+  ['ss-proc','Process Excellence','Securities Services, Zürich','Ihr macht Abläufe schneller und weniger fehleranfällig.','Mira Huber, Teamleiterin',['ops','daten'],'Fach- und Führungsrollen'],
+  ['rk-comp','Regulatory Compliance','Group Risk, Zürich','Ihr sorgt dafür, dass SIX die regulatorischen Vorgaben erfüllt.','Thomas Egli, Head Compliance',['risk'],'Vor allem Fachrollen'],
+  ['rk-cyber','Cyber Risk','Group Risk, Zürich und Warschau','Ihr schützt die Finanzinfrastruktur vor Angriffen.','Anna Wójcik, Lead Cyber Risk',['risk','tech'],'Fach- und Führungsrollen'],
+  ['pb-sb','Shadow Board','Bereichsübergreifend, berät die Geschäftsleitung','Ein Jahr lang strategische Fragen der Geschäftsleitung mitbearbeiten.','Andrea Keller, People Board',['*'],'Passt zur Führungslaufbahn']
+];
+function themaName(id){ for (var i = 0; i < THEMEN.length; i++) if (THEMEN[i][0] === id) return THEMEN[i][1]; return ''; }
+function abtMatches(){
+  var pl = S.plan, th = pl.themen || [];
+  var score = function(a){ return a[5][0] === '*' ? 1.5 : a[5].filter(function(t){ return th.indexOf(t) >= 0; }).length; };
+  return ABT.filter(function(a){ return a[5][0] === '*' ? pl.richtung === 'fuehrung' : score(a) > 0; }).sort(function(x, y){ return score(y) - score(x); });
+}
+var TERMIN_OPT = ['Mi, 25. Nov. | 16–16.30 Uhr','Di, 1. Dez. | 12–12.30 Uhr','Do, 3. Dez. | 8.30–9 Uhr'];
+function abtList(){
+  var pl = S.plan, T = pl.termine || {}, all = abtMatches(), list = S.abtAll ? all : all.slice(0, 4);
+  if (!(pl.themen || []).length) return '<div class="panel in">Wähle oben mindestens ein Themenfeld, dann erscheinen passende Abteilungen.</div>';
+  return '<div class="panel rows">' + list.map(function(a){ var t = T[a[0]];
+    var hi = (pl.richtung === 'fuehrung' && /Führung|Teamleitung/.test(a[6])) || (pl.richtung === 'fach' && /Fach/.test(a[6]));
+    return '<div><p class="t">' + esc(a[1]) + '</p><p class="m">' + esc(a[2]) + '</p><p class="ink mt6">' + esc(a[3]) + '</p><div class="inline mt6">' + (a[5][0] === '*' ? '' : a[5].map(function(x){ return pill('neutral', themaName(x)); }).join('')) + pill(hi ? 'solid' : 'info', a[6]) + '</div><p class="m mt6">Ansprechperson: ' + esc(a[4]) + '</p><div class="actions">'
+      + (t ? pill('warn', 'Termin angefragt: ' + t.datum + ', ' + t.zeit) : '<button class="btn primary small" data-a="sheet" data-v="termin" data-id="' + a[0] + '">Vorstellungstermin vereinbaren</button>') + '</div></div>'; }).join('') + '</div>'
+    + (all.length > 4 ? '<p class="mt10"><button class="linkbtn" data-a="abt-all">' + (S.abtAll ? 'Weniger anzeigen' : 'Alle ' + all.length + ' Abteilungen anzeigen') + '</button></p>' : '');
+}
+function abtFind(id){ for (var i = 0; i < ABT.length; i++) if (ABT[i][0] === id) return ABT[i]; return null; }
 function fokus(){ return {fach:S.plan.notiz, fuehrung:'Verantwortung für ein kleines Team im Kunden-Onboarding übernehmen und dabei nah an den Kunden bleiben.', offen:'Beide Wege weiter testen, bevor ich mich festlege: einen zweiten Einsatz machen und eine Teamleitung begleiten.'}[S.plan.richtung]; }
 function lead(n){ return '<span class="evi">' + ic(n) + '</span>'; }
 function kontakteN(){ var pre = S.plan.richtung + '-'; return Object.keys(S.plan.kontakte).filter(function(k){ return k.indexOf(pre) === 0; }).length; }
 
+var KOMP = [['Self-Leadership', 2.8, 3.9, 4.1], ['People Leadership', 2.5, 3.2, 3.0], ['Business & Network Leadership', 2.2, 3.4, 3.8]];
+function kpos(v){ return ((v - 1) / 4 * 100).toFixed(1) + '%'; }
+function kfmt(v){ return String(v.toFixed(1)).replace('.', ','); }
+var MARC_T = {
+  plan:['Entwicklungsplan besprechen', 'Vor dem Abschluss der Journey', ['Mi, 2. Dez. | 10–10.30 Uhr','Fr, 4. Dez. | 14–14.30 Uhr','Di, 8. Dez. | 9–9.30 Uhr']],
+  ci3:['Check-in nach 3 Monaten', 'Mai 2027: Umsetzung und sichtbare Wirkung', ['Di, 4. Mai | 10–10.45 Uhr','Do, 6. Mai | 14–14.45 Uhr']],
+  ci6:['Check-in nach 6 Monaten', 'August 2027: Wirkung und nächster Schritt', ['Di, 10. Aug. | 10–10.45 Uhr','Do, 12. Aug. | 14–14.45 Uhr']]
+};
+function marcItem(key){
+  var M = MARC_T[key], st = (S.plan.marc || {})[key], ok = st && st.status === 'bestaetigt';
+  return '<div><p class="t">' + M[0] + '</p><p class="m">' + M[1] + '</p><div class="actions">' + (st ? pill(ok ? 'ok' : 'warn', (ok ? 'Bestätigt: ' : 'Angefragt bei Marc: ') + st.datum + ', ' + st.zeit, ok ? 'check' : null) : '<button class="btn primary small" data-a="sheet" data-v="marc" data-id="' + key + '">Termin mit Marc vereinbaren</button>') + '</div></div>';
+}
+var PLAN_T = ['Was du kannst','Was andere dir zutrauen','Wohin du willst','Wo du das findest','Deine Ziele'];
+function kompPanel(){
+  return '<div class="panel in"><div class="klegend"><span><i class="lg-h"></i>Heute</span><span><i class="lg-s"></i>Zum Start</span><span><i class="lg-m"></i>Marcs Sicht</span></div>'
+    + KOMP.map(function(k){ return '<div class="kr"><div class="kr-h"><span class="t">' + k[0] + '</span><span class="kr-v">' + kfmt(k[2]) + '</span></div><div class="ktrack" role="img" aria-label="' + k[0] + ': heute ' + kfmt(k[2]) + ', zum Start ' + kfmt(k[1]) + ', Marcs Sicht ' + kfmt(k[3]) + ' von 5"><i class="kfill" style="width:' + kpos(k[2]) + '"></i><i class="kstart" style="left:' + kpos(k[1]) + '"></i><i class="kmarc" style="left:' + kpos(k[3]) + '"></i></div><p class="m">Zum Start ' + kfmt(k[1]) + ', Marcs Sicht ' + kfmt(k[3]) + '</p></div>'; }).join('')
+    + '<div class="kscale" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>'
+    + '<div class="note mt14">' + ic('info') + '<span>Marc sieht dich in Business & Network Leadership stärker als du dich selbst. Ein guter Punkt für euren nächsten Check-in.</span></div></div>'
+    + '<p class="hint">Skala 1 bis 5. Deine Einschätzung nach jedem Lab, Marcs nach dem Standortgespräch.</p>';
+}
+function zieleHTML(edit){
+  var Z = S.plan.ziele || [];
+  if (!Z.length) return '<div class="panel in">Noch keine Ziele. Übernimm einen Vorschlag oder formuliere ein eigenes Ziel.</div>';
+  return '<div class="panel rows">' + Z.map(function(z){ return '<div class="ziel"><button class="zcheck" data-a="ziel-done" data-id="' + z.id + '" aria-pressed="' + !!z.done + '" aria-label="Als erledigt markieren">' + (z.done ? ic('check') : '') + '</button><span class="row-main"><span class="t blk' + (z.done ? ' struck' : '') + '">' + esc(z.text) + '</span><span class="m blk">Bis ' + esc(z.bis) + '</span></span>' + (edit ? '<button class="x" data-a="ziel-del" data-id="' + z.id + '" aria-label="Ziel entfernen">' + ic('x') + '</button>' : '') + '</div>'; }).join('') + '</div>';
+}
+function zielVorschlaege(){
+  var d = abtMatches()[0], Z = S.plan.ziele || [], r = [];
+  if (d) r.push(['Vorstellungsgespräch bei ' + d[1] + ' führen', 'Mitte Dezember']);
+  r.push(['Business & Network Leadership stärken: zwei Kundengespräche pro Monat begleiten', 'Ende Januar']);
+  r.push(['People Leadership stärken: eine Teamsitzung pro Monat moderieren', 'Ende Februar']);
+  r.push(['Im nächsten Check-in mit Marc über seine Einschätzung sprechen', 'Januar']);
+  return r.filter(function(x){ return !Z.some(function(z){ return z.text === x[0]; }); });
+}
+function planStatus(){
+  var pl = S.plan, seen = pl.seen || {}, nT = Object.keys(pl.termine || {}).length, nZ = (pl.ziele || []).length, th = pl.themen || [];
+  var best = KOMP.slice().sort(function(x, y){ return y[2] - x[2]; })[0];
+  return [
+    {n:1, sub:'Stärkstes Feld: ' + best[0] + ' (' + kfmt(best[2]) + ')', done:!!seen[1]},
+    {n:2, sub:'Einschätzung von Marc und 2 Rückmeldungen', done:!!seen[2]},
+    {n:3, sub:RL[pl.richtung] + (th.length ? ', ' + th.map(themaName).join(' und ') : ', noch kein Themenfeld'), done:!!seen[3] && th.length > 0},
+    {n:4, sub:nT ? nT + (nT === 1 ? ' Vorstellungstermin angefragt' : ' Vorstellungstermine angefragt') : 'Noch kein Vorstellungstermin', done:nT > 0},
+    {n:5, sub:nZ ? nZ + (nZ === 1 ? ' Ziel gesetzt' : ' Ziele gesetzt') : 'Noch keine Ziele', done:nZ > 0}
+  ];
+}
 function scrEntwicklung(){
-  var pl = S.plan, a = pl.anschluss, nk = kontakteN();
+  var pl = S.plan, a = pl.anschluss, role = (abtMatches()[0] || ['', 'eine passende Abteilung'])[1];
   var h = top('Entwicklung', '', 3);
-  h += '<div class="gut mt14"><button class="dirc" data-a="go" data-v="richtung"><span class="dirc-l blk">Deine Richtung</span><span class="dirc-t blk">' + RL[pl.richtung] + '</span><span class="dirc-f blk">' + esc(fokus()) + '</span><span class="dirc-a">Ansehen und anpassen' + ic('chev') + '</span></button></div>';
-  h += sec('Dein Weg nach der Journey', '<div class="panel rows">'
-    + row('go', 'schritte', '', 'Mögliche nächste Schritte bei SIX', nk ? nk + (nk === 1 ? ' Kennenlerngespräch angefragt' : ' Kennenlerngespräche angefragt') : '3 Vorschläge passend zu deiner Richtung', '', lead('projekte'))
+  var W = [
+    {cls:'done', when:'Monat 12, 2. Nov.', t:'Laufbahnweg geklärt', sub:'Standortgespräch mit Marc', go:'plan', id:'3'},
+    {cls:'now', when:'Heute, Monat 13 von 16', t:'Business & Network Leadership', sub:'Labs 9 bis 12 und Business Challenge'},
+    {cls:'', when:'Februar 2027', t:'Abschluss der Journey', sub:'Schluss-Event, Anschlusserfahrung vereinbaren'},
+    {cls:'', when:'Bis ' + a.bis, t:'Anschlusserfahrung', sub:a.titel, pill:anschlussPill(a.status), go:'anschluss'},
+    {cls:'', when:'Mai und August 2027', t:'Check-ins mit Marc', sub:'Umsetzung, sichtbare Wirkung, nächster Schritt', go:'anschluss'},
+    {cls:'goal', when:'Danach', t:'Nächster Schritt bei SIX', sub:'Zum Beispiel: ' + role, go:'plan', id:'4'}
+  ];
+  h += sec('Dein Weg', '<div class="panel weg">' + W.map(function(w){
+      var inner = '<span class="weg-dot ' + w.cls + '"></span><span class="row-main"><span class="m blk">' + esc(w.when) + '</span><span class="t blk">' + esc(w.t) + '</span><span class="m blk">' + esc(w.sub) + '</span>' + (w.pill ? '<span class="blk mt6">' + w.pill + '</span>' : '') + '</span>';
+      return w.go ? '<button class="weg-i" data-a="go" data-v="' + w.go + '"' + (w.id ? ' data-id="' + w.id + '"' : '') + '>' + inner + '<span class="chev">' + ic('chev') + '</span></button>' : '<div class="weg-i">' + inner + '</div>';
+    }).join('') + '</div>');
+  var st = planStatus(), next = st.filter(function(x){ return !x.done; })[0];
+  h += sec('Dein Entwicklungsplan', '<p class="m mb8">In fünf Schritten von dem, was du kannst, zu deinen Zielen.</p><div class="panel rows">' + st.map(function(x){ return row('go', 'plan', String(x.n), PLAN_T[x.n - 1], x.sub, '', '<span class="num' + (x.done ? ' ok' : '') + '">' + (x.done ? ic('check') : x.n) + '</span>'); }).join('') + '</div>'
+    + '<button class="btn primary block mt10" data-a="go" data-v="plan" data-id="' + (next ? next.n : 1) + '">' + (!next ? 'Plan noch einmal durchgehen' : next.n === 1 ? 'Plan durchgehen' : 'Weiter bei Schritt ' + next.n + ': ' + PLAN_T[next.n - 1]) + '</button>');
+  if ((pl.ziele || []).length) h += sec('Deine Ziele', zieleHTML(false));
+  h += sec('Gespräche mit Marc', '<div class="panel rows">' + ['plan','ci3','ci6'].map(marcItem).join('') + '</div>');
+  h += sec('Mehr zu deiner Entwicklung', '<div class="panel rows">'
     + row('go', 'anschluss', '', 'Anschlusserfahrung', a.titel, '<span class="blk mt6">' + anschlussPill(a.status) + '</span>', lead('entwicklung'))
-    + row('go', 'wirkung', '', 'Deine Wirkung', pl.wirkung ? 'Wirkungsgespräch angefragt' : 'Rückmeldung von Sofia Marín, 30. Okt.', '', lead('eye'))
     + row('go', 'fortschritt', '', 'Fortschritt', pl.log[0][0] + ': ' + pl.log[0][1], '', lead('check'))
     + '</div>');
   return h;
 }
+function scrPlan(x){
+  var n = Math.max(1, Math.min(5, +x.id || 1)), pl = S.plan, body = '';
+  pl.seen = pl.seen || {}; pl.seen[n] = true;
+  var h = top('Dein Entwicklungsplan', 'Schritt ' + n + ' von 5: ' + PLAN_T[n - 1], null, true);
+  h += '<div class="gut mt14"><div class="wizbar" aria-hidden="true">' + PLAN_T.map(function(t, i){ return '<i class="' + (i + 1 < n ? 'done' : i + 1 === n ? 'now' : '') + '"></i>'; }).join('') + '</div></div>';
+  if (n === 1){
+    body = sec('Deine Kompetenzen', '<p class="m mb8">So schätzt du dich in den drei Führungsfeldern von SIX ein, und so sieht dich Marc.</p>' + kompPanel())
+      + sec('Stärken und Entwicklungsfelder', '<div class="panel in"><p class="f0">Darauf baust du</p><div class="inline">' + ['Struktur schaffen','Analytisch denken','Kundengespräche führen'].map(function(z){ return pill('info', z); }).join('') + '</div><p class="f0 mt14">Daran arbeitest du</p><div class="inline">' + ['Nein sagen','Mit Unsicherheit arbeiten','Vor grossen Runden präsentieren'].map(function(z){ return pill('open', z); }).join('') + '</div></div><p class="hint">Aus dem Lab «Me and My Skills» und deinem Coaching.</p>');
+  } else if (n === 2){
+    var SN = [['Struktur schaffen',5],['Kunden verstehen',4],['Analytisch denken',3],['Ruhig unter Druck',2]];
+    body = sec('Das traut dir Marc zu', '<div class="trust"><div class="trust-h"><span class="av lg">MS</span><span><span class="t blk">Marc Steiner</span><span class="m blk">Standortgespräch, 2. Nov.</span></span></div><div class="inline">' + ['Kunden verstehen','Fachliche Tiefe','Führung, etwas später'].map(function(z){ return pill('solid', z); }).join('') + '</div><p class="quote">«Führung traue ich ihr zu. Zuerst aber fachlich tiefer.»</p></div>')
+      + sec('Das sehen andere als deine Stärken', '<div class="panel in"><div class="avs-row"><span class="avs">' + ['MS','SM','JF','EV','MR','ZK'].map(function(i){ return '<span class="av sm">' + i + '</span>'; }).join('') + '</span><span class="m">6 Rückmeldungen</span></div>'
+        + SN.map(function(x){ return '<div class="srow"><span class="t">' + x[0] + '</span><span class="fig">' + x[1] + '×</span><span class="mbar"><i style="width:' + Math.round(x[1] / 6 * 100) + '%"></i></span></div>'; }).join('') + '</div><p class="hint">Wie oft eine Stärke in den Rückmeldungen genannt wurde.</p>')
+      + sec('Deine Wirkung', '<div class="stats"><div class="stat"><b>2</b><span>Ergebnisse werden weiter genutzt</span></div><div class="stat"><b>3</b><span>Teams haben profitiert</span></div><div class="stat"><b>1</b><span>Rückmeldung der GL folgt</span></div></div>'
+        + '<div class="wall mt10">'
+        + '<div class="wcard"><span class="av sm">SM</span><p class="quote">«Zwei deiner fünf Vorschläge sind schon umgesetzt.»</p><p class="m">Sofia Marín, Financial Information</p></div>'
+        + '<div class="wcard"><span class="av sm">JF</span><p class="quote">«Wir rufen neue Kunden jetzt nach der ersten Woche an.»</p><p class="m">Jonas Frei, Client Operations</p></div>'
+        + '<div class="wcard pend"><span class="av sm">EV</span><p class="t">Elena Vidal, Geschäftsleitung</p><p class="m">Nach der Präsentation am 28. Jan.</p></div>'
+        + '</div><p class="mt10"><button class="linkbtn" data-a="go" data-v="wirkung">' + (pl.wirkung ? 'Wirkungsgespräch angefragt' : 'Wirkungsgespräch anfragen') + '</button></p>');
+  } else if (n === 3){
+    var cur3 = RDIR.filter(function(r){ return r[0] === pl.richtung; })[0];
+    var VER = [['Monat 1, Kick-off','fuehrung','Führung schien mir der logische nächste Schritt.'],['Monat 7, nach dem Lab zu People Leadership','offen','Teams führen reizt mich, aber nicht als Selbstzweck.'],['Monat 12, Standortgespräch mit Marc', pl.richtung, fokus()]];
+    body = sec('Dein Laufbahnweg', '<div class="panel in"><div class="seg3">' + RDIR.map(function(r){ return '<button data-a="richtung" data-v="' + r[0] + '" aria-pressed="' + (pl.richtung === r[0]) + '">' + RSHORT[r[0]] + '</button>'; }).join('') + '</div><p class="m mt10">' + esc(cur3[2]) + '.</p><p class="f">Dein Fokus</p><p class="ink">' + esc(fokus()) + '</p></div>')
+      + sec('Wie sich dein Weg entwickelt hat', '<div class="panel in"><ol class="vl">' + VER.map(function(v, i){ return '<li><span class="dot ' + (i === VER.length - 1 ? 'now' : 'done') + '"></span><span><span class="m blk">' + esc(v[0]) + '</span><span class="blk mt6">' + pill(i === VER.length - 1 ? 'solid' : 'neutral', RL[v[1]]) + '</span><span class="ink blk mt6">' + esc(v[2]) + '</span></span></li>'; }).join('') + '</ol></div>')
+      + sec('Was dich interessiert', '<div class="tchips">' + THEMEN.map(function(t){ return '<button data-a="thema" data-v="' + t[0] + '" aria-pressed="' + ((pl.themen || []).indexOf(t[0]) >= 0) + '">' + t[1] + '</button>'; }).join('') + '</div><p class="hint">Wähle bis zu zwei Themenfelder. Daraus ergeben sich im nächsten Schritt die passenden Abteilungen.</p>');
+  } else if (n === 4){
+    body = sec('Passende Abteilungen', '<p class="m mb8">Zu deinen Themenfeldern ' + ((pl.themen || []).map(themaName).join(' und ') || '') + '. Lerne Teams kennen, bevor du dich festlegst: 30 Minuten, vor Ort oder per Teams.</p>' + abtList());
+  } else {
+    var V = zielVorschlaege();
+    body = sec('Deine Ziele', '<p class="m mb8">Konkret und mit Termin: So wirken Ziele am besten. Marc sieht deine Ziele und greift sie im Check-in auf.</p>' + zieleHTML(true))
+      + (V.length ? sec('Vorschläge aus deinem Plan', '<div class="panel rows">' + V.map(function(v, i){ return '<div class="ziel"><span class="row-main"><span class="t blk">' + esc(v[0]) + '</span><span class="m blk">Bis ' + esc(v[1]) + '</span></span><button class="btn ghost small" data-a="ziel-add" data-v="' + i + '">Übernehmen</button></div>'; }).join('') + '</div>') : '')
+      + sec('Eigenes Ziel', '<form data-f="ziel"><label class="f" for="zt">Was willst du erreichen?</label><input type="text" id="zt" name="text" required placeholder="Zum Beispiel: Ein Kundenprojekt selbst leiten"><label class="f" for="zb">Bis wann?</label><input type="text" id="zb" name="bis" required placeholder="Zum Beispiel: Ende März"><button class="btn ghost block mt10" type="submit">Ziel hinzufügen</button></form>')
+      + sec('Mit Marc besprechen', '<div class="panel rows">' + marcItem('plan') + '</div><p class="hint">Marc sieht deinen Plan schon vorher in seiner Ansicht.</p>');
+  }
+  h += body;
+  h += '<div class="gut mt14 wiznav">' + (n > 1 ? '<button class="btn ghost" data-a="plan-go" data-v="' + (n - 1) + '">Zurück</button>' : '') + (n < 5 ? '<button class="btn primary" data-a="plan-go" data-v="' + (n + 1) + '">Weiter: ' + PLAN_T[n] + '</button>' : '<button class="btn primary" data-a="plan-done">Plan speichern</button>') + '</div>';
+  return h;
+}
 function scrRichtung(){
   var pl = S.plan, cur3 = RDIR.filter(function(r){ return r[0] === pl.richtung; })[0];
-  var h = top('Deine Richtung', 'Geklärt im Standortgespräch mit Marc am 2. Nov.', null, true);
+  var h = top('Dein Laufbahnweg', 'Geklärt im Standortgespräch mit Marc am 2. Nov.', null, true);
   h += sec('', '<div class="panel in"><div class="seg3">' + RDIR.map(function(r){ return '<button data-a="richtung" data-v="' + r[0] + '" aria-pressed="' + (pl.richtung === r[0]) + '">' + RSHORT[r[0]] + '</button>'; }).join('') + '</div>'
     + '<p class="m mt10">' + esc(cur3[2]) + '</p><p class="f">Dein Fokus</p><p class="ink">' + esc(fokus()) + '</p>'
     + '<div class="note mt14">' + ic('reflexion') + '<span>Marc: «Lena blüht auf, wenn sie die Probleme von Kunden versteht. Führung traue ich ihr zu. Ich empfehle aber, zuerst fachlich tiefer zu gehen.»</span></div></div><p class="hint">Die Richtung ist kein Entscheid für immer. Du kannst sie jederzeit anpassen.</p>');
@@ -734,9 +989,7 @@ function scrRichtung(){
 }
 function scrSchritte(){
   var pl = S.plan;
-  var h = top('Mögliche nächste Schritte', 'Passend zu deiner Richtung: ' + RL[pl.richtung], null, true);
-  h += sec('', '<div class="panel rows">' + ROL[pl.richtung].map(function(r, i){ var key = pl.richtung + '-' + i; return '<div><p class="t">' + esc(r[0]) + '</p><p class="m">' + esc(r[1]) + '</p><p class="m">Ansprechperson: ' + esc(r[2]) + '</p><div class="actions">' + (pl.kontakte[key] ? pill('warn', 'Gespräch angefragt') : '<button class="btn ghost small" data-a="kontakt" data-v="' + key + '">Kennenlerngespräch anfragen</button>') + '</div></div>'; }).join('') + '</div><p class="hint">Beispiele, keine offenen Stellen. Wechselst du die Richtung, ändern sich die Vorschläge.</p>');
-  return h;
+  return top('Passende Abteilungen', 'Zu deinen Themenfeldern', null, true) + sec('', abtList() + '<p class="hint">Beispiele. Wählst du andere Themenfelder, ändern sich die Vorschläge.</p>');
 }
 function scrAnschluss(){
   var a = S.plan.anschluss;
@@ -744,7 +997,7 @@ function scrAnschluss(){
   h += sec('', '<div class="panel in"><p>' + anschlussPill(a.status) + '</p>' + (a.lm ? '<div class="note mt10">' + ic('info') + '<span>Marc: ' + esc(a.lm) + '</span></div>' : '')
     + '<div class="mt14">' + kv([['Vorhaben', a.titel], ['Konkretes Ergebnis', a.ergebnis], ['Damit arbeitet weiter', a.nutzer], ['Bis wann', a.bis]]) + '</div>'
     + (a.status === 'entwurf' ? '<div class="actions"><button class="btn ghost small" data-a="sheet" data-v="anschluss">Bearbeiten</button><button class="btn primary small" data-a="anschluss-senden">An Marc senden</button></div>' : '') + '</div><p class="hint">Vereinbart wird sie zum Abschluss der Journey.</p>');
-  h += sec('Check-ins nach dem Abschluss', '<div class="panel rows">' + ['Nach 3 Monaten, im Mai','Nach 6 Monaten, im August'].map(function(c){ return '<div><p class="t">' + c + '</p><p class="m">Umsetzung, sichtbare Wirkung, nächster Schritt</p><p class="mt6">' + pill('neutral', 'Geplant') + '</p></div>'; }).join('') + '</div>');
+  h += sec('Check-ins nach dem Abschluss', '<div class="panel rows">' + marcItem('ci3') + marcItem('ci6') + '</div>');
   return h;
 }
 function scrWirkung(){
@@ -777,6 +1030,12 @@ function sheetHTML(){
   } else if (sh.t === 'praemisse'){
     title = 'Prämisse hinzufügen';
     body = '<form data-f="praemisse"><label class="f" for="pn1">Wovon gehen wir aus?</label><textarea id="pn1" name="text" required placeholder="Eine Annahme, die das Team für wahr hält"></textarea><button class="btn primary block mt14" type="submit">Prämisse hinzufügen</button></form>';
+  } else if (sh.t === 'marc'){
+    var MT = MARC_T[sh.id]; title = 'Termin mit Marc vereinbaren';
+    body = '<p class="t">' + MT[0] + '</p><p class="m">' + MT[1] + '</p><form class="mt10" data-f="marc" data-id="' + sh.id + '"><label class="f" for="mc1">Wann</label><select id="mc1" name="termin">' + opts(MT[2]) + '</select><fieldset class="fs"><legend class="f">Wie</legend><div class="seg"><label class="segr"><input type="radio" name="format" value="vor Ort" checked><span>Vor Ort</span></label><label class="segr"><input type="radio" name="format" value="per Teams"><span>Per Teams</span></label></div></fieldset><label class="f" for="mc2">Was willst du besprechen? (optional)</label><textarea id="mc2" name="notiz" placeholder="Zum Beispiel: Meine Ziele und welche Abteilung ich mir anschauen will"></textarea><button class="btn primary block mt14" type="submit">Termin anfragen</button></form>';
+  } else if (sh.t === 'termin'){
+    a = abtFind(sh.id); title = 'Vorstellungstermin vereinbaren';
+    body = '<p class="t">' + esc(a[1]) + '</p><p class="m">' + esc(a[2]) + ', mit ' + esc(a[4]) + '</p><form class="mt10" data-f="termin" data-id="' + sh.id + '"><label class="f" for="tm1">Wann</label><select id="tm1" name="termin">' + opts(TERMIN_OPT) + '</select><fieldset class="fs"><legend class="f">Wie</legend><div class="seg"><label class="segr"><input type="radio" name="format" value="vor Ort" checked><span>Vor Ort</span></label><label class="segr"><input type="radio" name="format" value="per Teams"><span>Per Teams</span></label></div></fieldset><label class="f" for="tm2">Worüber möchtest du sprechen? (optional)</label><textarea id="tm2" name="notiz" placeholder="Zum Beispiel: Wie sieht ein typischer Tag bei euch aus?"></textarea><button class="btn primary block mt14" type="submit">Termin anfragen</button></form>';
   } else if (sh.t === 'erkenntnis'){
     title = 'Erkenntnis zuordnen';
     body = '<form data-f="erkenntnis" data-id="' + sh.id + '"><label class="f" for="ek1">Aus welchem Gespräch</label><select id="ek1" name="quelle">' + opts(INTERVIEWS) + '</select><label class="f" for="ek2">Was wurde gesagt?</label><textarea id="ek2" name="zitat" required></textarea><button class="btn primary block mt14" type="submit">Erkenntnis zuordnen</button></form>';
@@ -789,14 +1048,14 @@ function sheetHTML(){
 
 /* ---------- Hinweise zur Demo ---------- */
 var GUIDE = {
-  journey:['Die Startseite', 'Lena sieht, wo sie in ihrer 16-monatigen Journey steht und was als Nächstes ansteht. Die Prozentzahl zeigt, wie viel der 16 Monate geschafft ist, die vier farbigen Phasen sind die bestehende Struktur der Key Talent Journey. Darunter stehen der nächste Termin, die offenen Aufgaben und Lenas Stand.', ['Überblick'], ['Tippe auf eine Aufgabe unter «Als Nächstes».', 'Öffne «Ganze Journey ansehen».', 'Wechsle unten durch die fünf Bereiche.']],
+  journey:['Die Startseite', 'Lena sieht, wo sie in ihrer 16-monatigen Journey steht und was als Nächstes ansteht. Die Prozentzahl zeigt, wie viel der 16 Monate geschafft ist, die vier farbigen Phasen sind die bestehende Struktur der Key Talent Journey. Darunter stehen die Termine dieser Woche, die offenen Aufgaben und Lenas Stand.', ['Überblick'], ['Tippe auf eine Aufgabe unter «Als Nächstes».', 'Tippe in der Wochenleiste auf einen Tag oder klappe den ganzen Kalender aus.', 'Wechsle unten durch die fünf Bereiche.']],
   lernzeit:['Lernzeit und Unterstützung der Linie', 'SIXplorer und Line Manager vereinbaren vor dem Kick-off, wann Lernzeit stattfindet. Kann die Linie einen Termin nicht freigeben, muss sie einen Ersatztermin nennen. Wiederholte Blockaden werden für HR sichtbar.', ['Handlungsempfehlung 5.2', 'Voraussetzung für H1 bis H3'], ['Frage eine Lernzeit an.', 'Wechsle oben zur Führungskraft und gib sie frei oder schlage einen Ersatztermin vor.', 'Wechsle zurück: Lena sieht die Antwort.']],
-  projekte:['Project Board', 'Ein kuratiertes Board mit kurzen Einsätzen ausserhalb der eigenen Business Unit. Der SIXplorer übernimmt eine echte Aufgabe mit offenem Ergebnis und hält vorher sein Entwicklungsziel fest. Die Linie bestätigt die Kapazität.', ['Handlungsempfehlung 5.3', 'Schritt 1: Auslösen', 'Primär H2'], ['Öffne einen Einsatz und wähle ihn.', 'Halte ein Entwicklungsziel fest.', 'Bestätige als Führungskraft die Kapazität.']],
-  reflexion:['Reflexion', 'Reflexionsaufgaben nach Labs, Einsätzen und Gesprächen, dazu die Business Challenge als gemeinsamer Reflexionsraum. Zwei Kurzfragen nach jedem Eintrag liefern die Daten zu Sinn und Rollenklarheit. Einträge bleiben privat, solange Lena sie nicht freigibt.', ['Handlungsempfehlung 5.4', 'Schritt 2: Bearbeiten', 'H1 und H2'], ['Schreibe die offene Reflexion zu Lab 10.', 'Gib sie für Marc frei oder lass sie privat.', 'Schau in der Führungskräfte-Ansicht, was Marc davon sieht.']],
-  challenge:['Business Challenge als Reflexionsraum', 'Das Team hält vor den Interviews seine Prämissen fest und prüft sie danach an den Erkenntnissen. So wird sichtbar, wie sich das Verständnis der Fragestellung verändert hat. Die Sponsorin hinterfragt, gibt aber keine Lösung vor.', ['Handlungsempfehlung 5.4', 'Schritt 2: Bearbeiten'], ['Öffne eine offene Prämisse.', 'Ordne eine Erkenntnis zu und setze den Stand.', 'Halte fest, wie das Team es heute sieht.']],
-  entwicklung:['Entwicklungsplan und Anschluss', 'Nach rund zwölf Monaten klären SIXplorer und Line Manager die Richtung. Zum Abschluss vereinbaren sie eine selbst initiierte Anschlusserfahrung mit konkretem Ergebnis, nach drei und sechs Monaten folgen Check-ins. Rückmeldungen machen die eigene Wirkung sichtbar.', ['Handlungsempfehlung 5.5', 'Schritt 3: Verankern', 'Primär H3'], ['Tippe auf «Deine Richtung» und wechsle sie: Fokus, Verlauf und nächste Schritte passen sich an.', 'Öffne die Anschlusserfahrung, sende sie an Marc und vereinbare sie in der Führungskräfte-Ansicht.', 'Frage unter «Mögliche nächste Schritte» ein Kennenlerngespräch an.']]
+  projekte:['Projekte: horizontal und vertikal', 'Zwei Arten von Erfahrungen. Horizontal über das Project Board: kurze Einsätze in anderen Bereichen und Städten. Vertikal in der Business Challenge: Das Team bekommt einen Auftrag der Geschäftsleitung, löst ihn gemeinsam und präsentiert das Ergebnis vor dem Management, ähnlich wie ein Shadow Board.', ['Handlungsempfehlungen 5.3 und 5.4', 'Auslösen und Bearbeiten'], ['Wechsle oben zwischen Project Board und Business Challenge.', 'Wähle einen Einsatz und halte dein Entwicklungsziel fest.', 'Öffne die Business Challenge und prüfe eine Prämisse.']],
+  reflexion:['Reflexion', 'Reflexionsaufgaben nach Labs, Einsätzen und Gesprächen. Zwei Kurzfragen nach jedem Eintrag liefern die Daten zu Sinn und Rollenklarheit. Einträge bleiben privat, solange Lena sie nicht freigibt.', ['Schritt 2: Bearbeiten', 'H1 und H2'], ['Schreibe die offene Reflexion zu Lab 10.', 'Gib sie für Marc frei oder lass sie privat.', 'Schau in der Führungskräfte-Ansicht, was Marc davon sieht.']],
+  challenge:['Business Challenge', 'Die vertikale Achse: ein echter Auftrag der Geschäftsleitung. Das Team hält vorher seine Prämissen fest, prüft sie in Gesprächen, entwickelt eine Lösung und präsentiert sie vor der Geschäftsleitung. Die Auftraggeberin hinterfragt, gibt aber keine Lösung vor.', ['Handlungsempfehlung 5.4', 'Schritt 2: Bearbeiten', 'Wie ein Shadow Board'], ['Öffne eine offene Prämisse und setze den Stand.', 'Ordne eine Erkenntnis aus den Gesprächen zu.', 'Schau dir an, was für die Präsentation geplant ist.']],
+  entwicklung:['Entwicklungsplan und Anschluss', 'Oben steht «Dein Weg» als Überblick bis nach der Journey. Darunter führt der Entwicklungsplan in fünf Schritten von den eigenen Kompetenzen über das, was andere einem zutrauen, zu Richtung, passenden Abteilungen und konkreten Zielen mit Termin (Locke & Latham).', ['Handlungsempfehlung 5.5', 'Schritt 3: Verankern', 'Primär H3'], ['Tippe auf «Plan durchgehen» und klicke dich mit «Weiter» durch die fünf Schritte.', 'Wähle in Schritt 3 deinen Laufbahnweg und deine Themenfelder.', 'Vereinbare in Schritt 4 einen Vorstellungstermin und übernimm in Schritt 5 ein Ziel.']],
 };
-var GUIDE_MAP = {projekt:'projekte', einsatz:'projekte', schreiben:'reflexion', eintrag:'reflexion', praemisse:'challenge', richtung:'entwicklung', schritte:'entwicklung', anschluss:'entwicklung', wirkung:'entwicklung', fortschritt:'entwicklung'};
+var GUIDE_MAP = {kalender:'journey', projekt:'projekte', einsatz:'projekte', schreiben:'reflexion', eintrag:'reflexion', praemisse:'challenge', richtung:'entwicklung', plan:'entwicklung', schritte:'entwicklung', anschluss:'entwicklung', wirkung:'entwicklung', fortschritt:'entwicklung'};
 var FOOT = 'Konzept-Prototyp des HSG-Capstone-Teams zur Key Talent Journey. Kein offizielles Produkt von SIX. Alle Personen, Projekte und Zahlen sind erfunden.';
 function guideHTML(){
   var s = cur().s, g = GUIDE[GUIDE_MAP[s] || s] || GUIDE.journey;
@@ -810,6 +1069,7 @@ function lmQueue(){
   S.einsaetze.forEach(function(e){ if (e.status === 'angefragt') q.push({k:'kap', e:e}); });
   if (S.plan.anschluss.status === 'gesendet') q.push({k:'anschluss'});
   if (S.tomasz.kap === 'angefragt') q.push({k:'kapT'});
+  Object.keys(S.plan.marc || {}).forEach(function(k){ if (S.plan.marc[k].status === 'angefragt') q.push({k:'marc', key:k}); });
   S.transfer.forEach(function(t){ if (t.status === 'geplant') q.push({k:'transfer', t:t}); });
   return q;
 }
@@ -817,7 +1077,10 @@ function who(ini, name, what){ return '<p class="who"><span class="av sm">' + in
 function lrow(k, v, extra){ return '<div class="lrow"><span class="k">' + k + '</span><span>' + esc(v) + (extra ? ' ' + extra : '') + '</span></div>'; }
 function qItem(x){
   var h = '<div class="q">', p, a;
-  if (x.k === 'slot'){
+  if (x.k === 'marc'){
+    var mm = S.plan.marc[x.key];
+    h += who('LB', 'Lena Baumann', 'Gespräch mit dir') + '<p class="t">' + MARC_T[x.key][0] + '</p><p class="m">' + esc(mm.datum + ', ' + mm.zeit + ', ' + mm.format) + '</p>' + (mm.notiz ? '<p class="mt6">' + esc(mm.notiz) + '</p>' : '') + '<div class="actions"><button class="btn primary small" data-a="marc-ok" data-id="' + x.key + '">Bestätigen</button></div>';
+  } else if (x.k === 'slot'){
     h += who('LB', 'Lena Baumann', 'Lernzeit') + '<p class="t">' + esc(x.s.zweck) + '</p><p class="m">' + esc(x.s.datum + ', ' + x.s.zeit + (x.s.notiz ? '. Notiz: ' + x.s.notiz : '')) + '</p>';
     if (S.lmForm === x.s.id) h += '<form class="mt10" data-f="ersatz" data-id="' + x.s.id + '"><label class="f" for="al1">Ersatztermin</label><select id="al1" name="termin">' + opts(ALT_OPT) + '</select><label class="f" for="al2">Grund</label><input type="text" id="al2" name="grund" required placeholder="Warum geht der angefragte Termin nicht?"><div class="actions"><button class="btn primary small" type="submit">Ersatztermin vorschlagen</button><button class="btn ghost small" type="button" data-a="lm-form" data-id="">Abbrechen</button></div></form>';
     else h += '<div class="actions"><button class="btn primary small" data-a="slot-ok" data-id="' + x.s.id + '">Freigeben</button><button class="btn ghost small" data-a="lm-form" data-id="' + x.s.id + '">Ersatztermin vorschlagen</button></div><p class="hint">Ablehnen ohne Ersatztermin ist nicht vorgesehen.</p>';
@@ -848,6 +1111,11 @@ function lmLena(){
     + lrow('1 Auslösen', done + ' Einsatz abgeschlossen' + (pend ? ', ' + pend + ' in Planung' : ''))
     + lrow('2 Bearbeiten', (8 + S.journal.length) + ' Reflexionen erledigt, ' + S.offen.length + ' offen. Business Challenge: ' + off + ' von ' + S.praemissen.length + ' Prämissen offen.')
     + lrow('3 Verankern', 'Richtung: ' + ri + '. Anschlusserfahrung ' + (a === 'vereinbart' ? 'vereinbart.' : a === 'gesendet' ? 'wartet auf dich.' : 'im Entwurf.')) + '</div>';
+  var Z = S.plan.ziele || [], T = S.plan.termine || {};
+  h += '<div class="card"><h2>Lenas Entwicklungsplan</h2><p class="m">Laufbahnweg: ' + RL[S.plan.richtung] + '. Themenfelder: ' + ((S.plan.themen || []).map(themaName).join(' und ') || 'noch keine') + '.</p>'
+    + (Z.length ? Z.map(function(z){ return '<div class="q"><p class="t">' + esc(z.text) + '</p><p class="m">Bis ' + esc(z.bis) + '</p><p class="mt6">' + (z.done ? pill('ok', 'Erreicht', 'check') : pill('neutral', 'Offen')) + '</p></div>'; }).join('') : '<p class="m mt10">Noch keine Ziele gesetzt.</p>')
+    + (Object.keys(T).length ? '<p class="m mt10">Vorstellungstermine: ' + Object.keys(T).map(function(k){ return esc(T[k].abt + ' am ' + T[k].datum); }).join(', ') + '</p>' : '')
+    + '<p class="hint">Greif die Ziele im nächsten Check-in auf.</p></div>';
   h += '<div class="card"><h2>Mit dir geteilt</h2>' + (shared.length ? shared.map(function(j){ return '<div class="q"><p class="m">' + esc(j.titel + ', ' + j.datum) + '</p><p class="quote mt6">' + esc(j.qa[0][1]) + '</p></div>'; }).join('') : '<p class="m">Lena hat keinen Eintrag mit dir geteilt.</p>')
     + '<div class="note mt10">' + ic('lock') + '<span>Private Einträge siehst du nicht. Du siehst nur, dass Lena reflektiert hat.</span></div></div>';
   h += '<div class="card"><h2>Aktivität</h2>' + feedHTML(S.feed) + '</div>';
@@ -896,16 +1164,18 @@ function viewHR(){
 }
 
 /* ---------- Zusammensetzen ---------- */
-var SCREENS = {journey:scrJourney, lernzeit:scrLernzeit, projekte:scrProjekte, reflexion:scrReflexion, entwicklung:scrEntwicklung, projekt:scrProjekt, einsatz:scrEinsatz, schreiben:scrSchreiben, eintrag:scrEintrag, challenge:scrChallenge, praemisse:scrPraemisse, richtung:scrRichtung, schritte:scrSchritte, anschluss:scrAnschluss, wirkung:scrWirkung, fortschritt:scrFortschritt};
+var SCREENS = {kalender:scrKalender, journey:scrJourney, lernzeit:scrLernzeit, projekte:scrProjekte, reflexion:scrReflexion, entwicklung:scrEntwicklung, projekt:scrProjekt, einsatz:scrEinsatz, schreiben:scrSchreiben, eintrag:scrEintrag, challenge:scrChallenge, praemisse:scrPraemisse, plan:scrPlan, richtung:scrRichtung, schritte:scrSchritte, anschluss:scrAnschluss, wirkung:scrWirkung, fortschritt:scrFortschritt};
 function viewSix(){
   var c = cur(), fn = SCREENS[c.s] || scrJourney;
   return '<div class="six-wrap"><div class="phone"><div class="screen"><div class="scroll" id="scroll">' + fn(c) + '</div><nav class="tabs" aria-label="Bereiche">'
     + TABS.map(function(t){ return '<button data-a="tab" data-v="' + t[0] + '"' + (S.tab === t[0] ? ' aria-current="page"' : '') + '>' + ic(t[2]) + '<span>' + t[1] + '</span></button>'; }).join('')
     + '</nav>' + sheetHTML() + '</div></div>' + guideHTML() + '</div>';
 }
+var LOGO = false;
+try { var logoImg = new Image(); logoImg.onload = function(){ LOGO = true; if (S) render(); }; logoImg.src = 'six-logo.png'; } catch (e) {}
 function renderBar(){
   var q = lmQueue().length;
-  document.getElementById('bar').innerHTML = '<div class="brand"><span class="brand-mark">' + ic('journey') + '</span><span>KTJ Companion<small>Konzept-Prototyp, Daten erfunden</small></span></div>'
+  document.getElementById('bar').innerHTML = '<div class="brand">' + (LOGO ? '<img class="brand-logo" src="six-logo.png" alt="SIX">' : '<span class="brand-mark">' + ic('journey') + '</span>') + '<span>KTJ Companion<small>Konzept-Prototyp, Daten erfunden</small></span></div>'
     + '<div class="roles" role="group" aria-label="Ansicht wechseln">' + ROLES.map(function(r){ return '<button data-a="role" data-v="' + r[0] + '" aria-pressed="' + (S.role === r[0]) + '">' + r[1] + (r[0] === 'lm' && q ? '<span class="badge" aria-label="' + q + ' offen">' + q + '</span>' : '') + '</button>'; }).join('') + '</div>'
     + '<div class="bar-meta"><button data-a="reset" aria-label="Demo zurücksetzen">Zurücksetzen</button></div>';
 }
@@ -948,8 +1218,19 @@ var A = {
   close:function(){ S.sheet = null; },
   timeline:function(){ S.timeline = !S.timeline; },
   filter:function(v){ S.filter = v; },
+  axis:function(v){ S.projAxis = v; },
+  'abt-all':function(){ S.abtAll = !S.abtAll; },
+  'marc-ok':function(v, el){ var m = (S.plan.marc || {})[idOf(el)]; if (m){ m.status = 'bestaetigt'; toast('Termin bestätigt. Lena sieht die Bestätigung.'); } },
+  'plan-go':function(v){ var c = S.stack[S.stack.length - 1]; if (c && c.s === 'plan') c.id = String(v); else S.stack.push({s:'plan', id:String(v)}); },
+  'plan-done':function(){ S.stack.pop(); feed('Entwicklungsplan aktualisiert'); toast('Entwicklungsplan gespeichert'); },
+  'ziel-add':function(v){ var x = zielVorschlaege()[+v]; if (!x) return; S.plan.ziele = S.plan.ziele || []; S.plan.ziele.push({id:'z' + (S.n++), text:x[0], bis:x[1], done:false}); toast('Ziel übernommen'); },
+  'ziel-done':function(v, el){ var z = find(S.plan.ziele || [], 'id', idOf(el)); if (z){ z.done = !z.done; if (z.done){ feed('Ziel erreicht: ' + z.text); toast('Ziel erreicht'); } } },
+  'ziel-del':function(v, el){ var id = idOf(el); S.plan.ziele = (S.plan.ziele || []).filter(function(z){ return z.id !== id; }); },
+  thema:function(v){ var th = S.plan.themen = S.plan.themen || [], i = th.indexOf(v); if (i >= 0) th.splice(i, 1); else { th.push(v); if (th.length > 2) th.shift(); } },
   'cal-m':function(v){ S.calM = Math.max(0, Math.min(CAL_M.length - 1, S.calM + (+v))); var cm = CAL_M[S.calM], pre = cm[0] + '-' + pad(cm[1]); S.calSel = calEvents().map(function(e){ return e.k; }).filter(function(k){ return k.slice(0, 7) === pre; }).sort()[0] || null; },
   'cal-d':function(v){ S.calSel = v; },
+  'cal-toggle':function(){ S.calOpen = !S.calOpen; if (S.calOpen) S.calM = 0; },
+  'cal-open-home':function(){ S.tab = 'journey'; S.stack = []; S.calOpen = true; S.calM = 0; },
   reset:function(){ var r = S.role; S = seed(); S.role = r; toast('Demo zurückgesetzt'); },
   'slot-annehmen':function(v, el){ var s = find(S.slots, 'id', idOf(el)); s.datum = s.ersatz.datum; s.zeit = s.ersatz.zeit; s.status = 'bestaetigt'; s.ersatz = null; feed('Ersatztermin für die Lernzeit angenommen'); toast('Ersatztermin angenommen'); },
   'transfer-ok':function(v, el){ find(S.transfer, 'id', idOf(el)).status = 'gefuehrt'; feed('Transfergespräch nach Lab 10 geführt'); toast('Transfergespräch als geführt markiert'); },
@@ -986,6 +1267,9 @@ var F = {
   },
   heute:function(d, f){ var p = find(S.praemissen, 'id', idOf(f)); p.heute = d.heute.trim(); p.warum = (d.warum || '').trim(); toast('Neue Sicht gespeichert'); },
   kommentar:function(d, f){ find(S.praemissen, 'id', idOf(f)).kom.push(['Lena Baumann', d.text.trim()]); toast('Kommentar hinzugefügt'); },
+  termin:function(d, f){ var id = idOf(f), a = abtFind(id), t = TERMIN_OPT[+d.termin].split(' | '); S.plan.termine = S.plan.termine || {}; S.plan.termine[id] = {datum:t[0], zeit:t[1], format:d.format, abt:a[1]}; S.sheet = null; feed('Vorstellungstermin angefragt: ' + a[1]); toast('Termin angefragt. ' + a[4].split(',')[0] + ' bestätigt ihn.'); },
+  ziel:function(d){ S.plan.ziele = S.plan.ziele || []; S.plan.ziele.push({id:'z' + (S.n++), text:d.text.trim(), bis:d.bis.trim(), done:false}); toast('Ziel hinzugefügt'); },
+  marc:function(d, f){ var id = idOf(f), t = MARC_T[id][2][+d.termin].split(' | '); S.plan.marc = S.plan.marc || {}; S.plan.marc[id] = {datum:t[0], zeit:t[1], format:d.format, notiz:(d.notiz || '').trim(), status:'angefragt'}; S.sheet = null; feed('Termin mit dir angefragt: ' + MARC_T[id][0]); toast('Termin angefragt. Marc bestätigt ihn in seiner Ansicht.'); },
   log:function(d){ S.plan.log.unshift(['Heute', d.text.trim()]); feed('Fortschritt zur Anschlusserfahrung notiert'); toast('Fortschritt notiert'); },
   ersatz:function(d, f){ var s = find(S.slots, 'id', idOf(f)), t = ALT_OPT[+d.termin].split(' | '); s.status = 'ersatz'; s.ersatz = {datum:t[0], zeit:t[1], grund:d.grund.trim()}; S.lmForm = null; toast('Ersatztermin vorgeschlagen. Lena entscheidet.'); }
 };
